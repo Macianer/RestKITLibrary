@@ -27,6 +27,7 @@
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"northeast" toKeyPath:@"northeast" withMapping:[RKLIBGGCMappingHelper locationMapping]]];
     return mapping;
 }
+
 + (RKObjectMapping *) locationMapping
 {
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBGGCLocation class]];
@@ -48,7 +49,7 @@
     [mapping addAttributeMappingsFromDictionary:@{@"formatted_address" : @"formattedAddress"}];
     [mapping addAttributeMappingsFromDictionary:@{@"types" : @"types"}];
      [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"geometry" toKeyPath:@"geometry" withMapping:[RKLIBGGCMappingHelper geometryMapping] ]];
-     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"address_components" toKeyPath:@"adressComponents" withMapping:[RKLIBGGCMappingHelper adressComponentMapping] ]];
+     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"address_components" toKeyPath:@"addressComponents" withMapping:[RKLIBGGCMappingHelper adressComponentMapping] ]];
     return mapping;
 }
 

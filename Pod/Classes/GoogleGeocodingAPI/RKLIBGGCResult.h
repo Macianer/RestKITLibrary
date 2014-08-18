@@ -10,7 +10,7 @@
 #import "RKLIBGGCGeometry.h"
 
 @interface RKLIBGGCResult : NSObject
-@property (nonatomic, strong) NSArray *adressComponents;
+@property (nonatomic, strong) NSArray *addressComponents;
 @property (nonatomic, strong) NSString *formattedAddress;
 @property (nonatomic, strong) NSArray *types;
 @property (nonatomic, strong) RKLIBGGCGeometry *geometry;

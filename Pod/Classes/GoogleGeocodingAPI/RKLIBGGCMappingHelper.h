@@ -19,5 +19,9 @@
 @interface RKLIBGGCMappingHelper : NSObject
 
 + (RKObjectMapping *) responseMapping;
-
++ (RKObjectMapping *) resultMapping;
++ (RKObjectMapping *) adressComponentMapping;
++ (RKObjectMapping *) locationMapping;
++ (RKObjectMapping *) viewportMapping;
++ (RKObjectMapping *) geometryMapping;
 @end
