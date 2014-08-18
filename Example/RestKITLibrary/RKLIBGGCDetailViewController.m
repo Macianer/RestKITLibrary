@@ -59,7 +59,7 @@
     if(_result.formattedAddress){
         _section_formattedAddress = _section_count;
         _section_count++;}
-    if(_result.adressComponents)
+    if(_result.addressComponents)
     {
         _section_adressComponents = _section_count;
         _section_count++;
@@ -93,7 +93,7 @@
     
     if( section == _section_adressComponents)
     {
-            return _result.adressComponents.count;
+            return _result.addressComponents.count;
     }
     else
     return 1;
@@ -101,19 +101,54 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell" forIndexPath:indexPath];
+    UITableViewCell *cell = nil;
+    if(indexPath.section != _section_adressComponents)
+   cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell" forIndexPath:indexPath];
     
     if (indexPath.section  == _section_formattedAddress) {
+        
         cell.textLabel.text = _result.formattedAddress;
     }
     else if(indexPath.section == _section_adressComponents)
     {
-        RKLIBGGCAdressComponent *component = [_result.adressComponents objectAtIndex:indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ComponentsCell" forIndexPath:indexPath];
+        RKLIBGGCAdressComponent *component = [_result.addressComponents objectAtIndex:indexPath.row];
         cell.textLabel.text = component.shortName;
         cell.detailTextLabel.text = component.longName;
+        UILabel *l3 = (UILabel *)[cell.contentView viewWithTag:2001];
+        l3.text = [self stringFromStringArray:component.types];
+    }
+    else if(indexPath.section == _section_types)
+    {
+
+        cell.textLabel.text =[self stringFromStringArray:_result.types];
+    }
+    else if (indexPath.section == _section_geometry)
+    {
+        cell.textLabel.text = _result.geometry.locationType;
+        
     }
     return cell;
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == _section_adressComponents)
+    {
+        return 80.0f;
+    }
+    return 45.0f;
+}
+-(NSString *) stringFromStringArray: (NSArray *) array
+{
+    NSMutableString *mString = [NSMutableString stringWithFormat:@""];
+    for (NSString *type in _result.types) {
+        
+        [mString appendFormat:@"%@,",type];
+    }
+    return [mString substringWithRange:NSMakeRange(0, mString.length -1)];
+}
+
 #pragma mark UITableViewDelegate
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

@@ -16,16 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0zG-04-L8D">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0zG-04-L8D">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainCell" textLabel="XiY-pu-jNL" detailTextLabel="5t9-2b-PTP" style="IBUITableViewCellStyleSubtitle" id="l7g-6k-P2q">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MainCell" textLabel="XiY-pu-jNL" detailTextLabel="5t9-2b-PTP" style="IBUITableViewCellStyleSubtitle" id="l7g-6k-P2q">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7g-6k-P2q" id="UEh-15-WjU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XiY-pu-jNL">
@@ -53,6 +53,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0zG-04-L8D" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="PQI-ke-nin"/>
+                            <constraint firstItem="0zG-04-L8D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="UfI-fx-zl5"/>
+                            <constraint firstAttribute="trailing" secondItem="0zG-04-L8D" secondAttribute="trailing" id="WD5-w4-HQc"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="0zG-04-L8D" secondAttribute="bottom" id="rX5-hy-eQG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Nk-3x-SzJ"/>
                     <connections>

@@ -64,16 +64,16 @@
     
     // cancel all pending requests
     [[RKObjectManager sharedManager] cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:kAPI_PATTERN_JSON];
-    NSLog(@"success");
+
     [[RKObjectManager sharedManager] getObjectsAtPath:kAPI_PATTERN_JSON parameters:dict success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"success");
+
         RKLIBGGCResponse *response = mappingResult.firstObject;
         weakSelf.googlePlaces = response.result;
         [weakSelf.tableView reloadData];
         //
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         //
-        NSLog(@"failed");
+
     }];
 }
 
@@ -97,11 +97,6 @@
     
     RKLIBGGCResult *result = [self.googlePlaces objectAtIndex:indexPath.row];
     cell.textLabel.text = result.formattedAddress;
-    
-    for (RKLIBGGCAdressComponent *adressComponents in result.adressComponents)
-    {
-        NSLog(@"adressComponent %@", adressComponents.longName );
-    }
     
     return cell;
 }

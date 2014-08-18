@@ -22,7 +22,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
 
-    NSDictionary *dateSet1 = @{ kTitleKey : @"GoogleGeocodingAPI", kLongTitleKey: @"GoogleGeocodingAPI" };
+    NSDictionary *dateSet1 = @{ kTitleKey : @"GoogleGeocodingAPI", kLongTitleKey: @"http://maps.googleapis.com/maps/api/geocode/" };
     
     _dataSets = @[dateSet1];
 }
