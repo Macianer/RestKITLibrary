@@ -1,0 +1,179 @@
+{
+    "results" : [
+                 {
+                 "address_components" : [
+                                         {
+                                         "long_name" : "Times Square",
+                                         "short_name" : "Times Square",
+                                         "types" : [ "point_of_interest", "establishment" ]
+                                         },
+                                         {
+                                         "long_name" : "Theater District - Times Square",
+                                         "short_name" : "Theater District - Times Square",
+                                         "types" : [ "neighborhood", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "Manhattan",
+                                         "short_name" : "Manhattan",
+                                         "types" : [ "sublocality_level_1", "sublocality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York",
+                                         "short_name" : "New York",
+                                         "types" : [ "locality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York County",
+                                         "short_name" : "New York County",
+                                         "types" : [ "administrative_area_level_2", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York",
+                                         "short_name" : "NY",
+                                         "types" : [ "administrative_area_level_1", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "United States",
+                                         "short_name" : "US",
+                                         "types" : [ "country", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "10036",
+                                         "short_name" : "10036",
+                                         "types" : [ "postal_code" ]
+                                         }
+                                         ],
+                 "formatted_address" : "Times Square, Manhattan, NY 10036, USA",
+                 "geometry" : {
+                 "location" : {
+                 "lat" : 40.758895,
+                 "lng" : -73.985131
+                 },
+                 "location_type" : "APPROXIMATE",
+                 "viewport" : {
+                 "northeast" : {
+                 "lat" : 40.7602439802915,
+                 "lng" : -73.9837820197085
+                 },
+                 "southwest" : {
+                 "lat" : 40.7575460197085,
+                 "lng" : -73.98647998029151
+                 }
+                 }
+                 },
+                 "types" : [ "point_of_interest", "establishment" ]
+                 },
+                 {
+                 "address_components" : [
+                                         {
+                                         "long_name" : "Times Square",
+                                         "short_name" : "Times Square",
+                                         "types" : [ "subway_station", "transit_station", "train_station", "establishment" ]
+                                         },
+                                         {
+                                         "long_name" : "Wuzhong",
+                                         "short_name" : "Wuzhong",
+                                         "types" : [ "sublocality_level_1", "sublocality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "Suzhou",
+                                         "short_name" : "Suzhou",
+                                         "types" : [ "locality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "China",
+                                         "short_name" : "CN",
+                                         "types" : [ "country", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "215123",
+                                         "short_name" : "215123",
+                                         "types" : [ "postal_code" ]
+                                         }
+                                         ],
+                 "formatted_address" : "Times Square, Wuzhong, Suzhou, China, 215123",
+                 "geometry" : {
+                 "location" : {
+                 "lat" : 31.322484,
+                 "lng" : 120.713015
+                 },
+                 "location_type" : "APPROXIMATE",
+                 "viewport" : {
+                 "northeast" : {
+                 "lat" : 31.3238329802915,
+                 "lng" : 120.7143639802915
+                 },
+                 "southwest" : {
+                 "lat" : 31.3211350197085,
+                 "lng" : 120.7116660197085
+                 }
+                 }
+                 },
+                 "types" : [ "subway_station", "transit_station", "train_station", "establishment" ]
+                 },
+                 {
+                 "address_components" : [
+                                         {
+                                         "long_name" : "Theater District - Times Square",
+                                         "short_name" : "Theater District - Times Square",
+                                         "types" : [ "neighborhood", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "Manhattan",
+                                         "short_name" : "Manhattan",
+                                         "types" : [ "sublocality_level_1", "sublocality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York",
+                                         "short_name" : "New York",
+                                         "types" : [ "locality", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York County",
+                                         "short_name" : "New York County",
+                                         "types" : [ "administrative_area_level_2", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "New York",
+                                         "short_name" : "NY",
+                                         "types" : [ "administrative_area_level_1", "political" ]
+                                         },
+                                         {
+                                         "long_name" : "United States",
+                                         "short_name" : "US",
+                                         "types" : [ "country", "political" ]
+                                         }
+                                         ],
+                 "formatted_address" : "Theater District - Times Square, New York, NY, USA",
+                 "geometry" : {
+                 "bounds" : {
+                 "northeast" : {
+                 "lat" : 40.7641791,
+                 "lng" : -73.97907789999999
+                 },
+                 "southwest" : {
+                 "lat" : 40.75373,
+                 "lng" : -73.9908822
+                 }
+                 },
+                 "location" : {
+                 "lat" : 40.759011,
+                 "lng" : -73.9844722
+                 },
+                 "location_type" : "APPROXIMATE",
+                 "viewport" : {
+                 "northeast" : {
+                 "lat" : 40.7641791,
+                 "lng" : -73.97907789999999
+                 },
+                 "southwest" : {
+                 "lat" : 40.75373,
+                 "lng" : -73.9908822
+                 }
+                 }
+                 },
+                 "types" : [ "neighborhood", "political" ]
+                 }
+                 ],
+    "status" : "OK"
+}
