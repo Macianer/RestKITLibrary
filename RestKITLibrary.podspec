@@ -23,19 +23,13 @@ Pod::Spec.new do |s|
   s.author           = { "ronnymeissner" => "owner@meissner-ronny.de" }
   s.source           = { :git => "https://github.com/ronnymeissner/RestKITLibrary.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/the_macianer'
-
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
-    
   s.requires_arc = true
-
-  #s.source_files = 'Pod/Classes','Pod/Classes/**/*.{h,m}'
   s.resources = 'Pod/Assets/*.png'
 
-  #s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'RestKit', '~> 0.23.2'
-
+  s.dependency 'RestKit', '~> 0.23.3'
+  s.dependency 'RestKit/Testing', '~> 0.23.3'
   s.subspec 'Base' do |bs|
     bs.public_header_files = 'Pod/Classes/*.h'
     bs.source_files = 'Pod/Classes/*.{h,m}'
@@ -46,4 +40,11 @@ Pod::Spec.new do |s|
     ggas.public_header_files = 'Pod/Classes/GoogleGeocodingAPI/*.h'
     ggas.source_files = 'Pod/Classes/GoogleGeocodingAPI/*.{h,m}'
   end
+  
+  s.subspec 'GooglePlacesAPI' do |ggas|
+    ggas.dependency 'RestKITLibrary/Base'
+    ggas.public_header_files = 'Pod/Classes/GooglePlacesAPI/*.h'
+    ggas.source_files = 'Pod/Classes/GooglePlacesAPI/*.{h,m}'
+  end
+
 end
