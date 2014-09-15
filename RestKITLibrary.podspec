@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RestKITLibrary"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "RestKITLibrary represent a library for Restful webservices based on RestKit."
   s.description      = <<-DESC
                        An optional longer descripth

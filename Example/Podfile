@@ -3,6 +3,7 @@ target 'RestKITLibrary', :exclusive => true do
 end
 
 target 'Tests', :exclusive => true do
+    pod "RestKITLibrary", :path => "../"
     #pod 'Specta', '~> 0.2.1'
     #pod 'Expecta'
     #pod 'FBSnapshotTestCase'
