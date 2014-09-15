@@ -22,8 +22,9 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     NSBundle *testBundle = [NSBundle mainBundle];
+    testBundle = [NSBundle bundleForClass:[self class]];
   
-        [RKTestFixture setFixtureBundle:testBundle];
+   [RKTestFixture setFixtureBundle:testBundle];
 
 }
 
@@ -40,14 +41,14 @@
     return object;
 }
 
-- (void)testFile1
+- (void)mappingTest1
 {
     id json = [RKTestFixture parsedObjectWithContentsOfFixture:@"ggc_file1.json"];
     
     RKMappingTest *mappingTest = [RKMappingTest testForMapping:[RKLIBGGCMappingHelper resultMapping] sourceObject:json destinationObject:nil];
     
     [mappingTest addExpectation:[RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"status" destinationKeyPath:@"status"]];
-    XCTAssertTrue([mappingTest evaluate], @"");
+    XCTAssertTrue([mappingTest evaluate], @"The status has not been set up!");
 }
 
 @end
