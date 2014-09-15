@@ -1,5 +1,5 @@
 //
-//  GCResponse.m
+//  RKLIBGGCResponse.m
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 28.03.14.
@@ -10,4 +10,8 @@
 
 @implementation RKLIBGGCResponse
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"[status: %@; result: %@]",self.status, [self.results description]];
+}
 @end

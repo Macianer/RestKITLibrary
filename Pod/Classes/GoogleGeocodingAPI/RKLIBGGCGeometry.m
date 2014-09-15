@@ -1,5 +1,5 @@
 //
-//  GCGeometry.m
+//  RKLIBGGCGeometry.m
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 28.03.14.
@@ -10,4 +10,8 @@
 
 @implementation RKLIBGGCGeometry
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"[location: %@; [locationType: %@]; viewport %@]",[self.location description],self.locationType, [self.viewport description]  ];
+}
 @end

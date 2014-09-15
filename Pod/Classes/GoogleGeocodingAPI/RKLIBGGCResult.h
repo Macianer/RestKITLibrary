@@ -1,5 +1,5 @@
 //
-//  GCResult.h
+//  RKLIBGGCResult.h
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 28.03.14.

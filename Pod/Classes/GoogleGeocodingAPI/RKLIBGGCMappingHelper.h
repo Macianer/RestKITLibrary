@@ -1,5 +1,5 @@
 //
-//  MappingHelper.h
+//  RKLIBGGCMappingHelper.h
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 13.02.14.
@@ -13,7 +13,7 @@
 #import "RKLIBGGCResponse.h"
 #import "RKLIBGGCResult.h"
 #import "RKLIBGGCViewport.h"
-#import "RKLIBGGCAdressComponent.h"
+#import "RKLIBGGCAddressComponent.h"
 #import <RestKit/RestKit.h>
 
 @interface RKLIBGGCMappingHelper : NSObject

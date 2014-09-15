@@ -1,5 +1,5 @@
 //
-//  MappingHelper.m
+//  RKLIBGGCMappingHelper.m
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 13.02.14.
@@ -17,6 +17,7 @@
       [mapping addAttributeMappingsFromDictionary:@{@"location_type" : @"locationType"}];
      [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:[RKLIBGGCMappingHelper locationMapping] ]];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"viewport" toKeyPath:@"viewport" withMapping:[RKLIBGGCMappingHelper viewportMapping] ]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bounds" toKeyPath:@"bounds" withMapping:[RKLIBGGCMappingHelper viewportMapping] ]];
     return mapping;
 }
 
@@ -37,7 +38,7 @@
 
 + (RKObjectMapping *) adressComponentMapping
 {
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBGGCAdressComponent class]];
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBGGCAddressComponent class]];
       [mapping addAttributeMappingsFromDictionary:@{@"long_name" : @"longName",
                                                     @"short_name" : @"shortName"}];
     [mapping addAttributeMappingsFromDictionary:@{@"types" : @"types"}];
@@ -58,7 +59,7 @@
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBGGCResponse class]];
     
     [mapping addAttributeMappingsFromDictionary:@{@"status" : @"status"}];
-    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"results" toKeyPath:@"result" withMapping:[RKLIBGGCMappingHelper resultMapping] ]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"results" toKeyPath:@"results" withMapping:[RKLIBGGCMappingHelper resultMapping] ]];
     
     return mapping;
 }

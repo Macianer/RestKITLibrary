@@ -1,5 +1,5 @@
 //
-//  GCViewport.h
+//  RKLIBGGCViewport.h
 //  RestKit_Geocoding_API_Example
 //
 //  Created by Ronny Meissner on 28.03.14.
@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RKLIBGGCLocation.h"
+
 @interface RKLIBGGCViewport : NSObject
 @property (nonatomic, strong) RKLIBGGCLocation *southwest;
 @property (nonatomic, strong) RKLIBGGCLocation *northeast;
