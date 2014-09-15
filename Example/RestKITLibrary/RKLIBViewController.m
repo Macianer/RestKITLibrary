@@ -15,19 +15,13 @@
 #import <RestKITLibrary/RKLIBGGC.h>
 #import <RestKITLibrary/RKLIBGP.h>
 
-//#if kGPAPIKey
-//#elif
-//#import 
-//#endif
-//
-//#if __has_include("RKLIBKeys.h")
-//#define Keys_included
-//#endif
-//#ifndef Keys_included
-//static NSString * const kGPAPIKey = @"api key";
-//#endif
+#import "RKLIBTableViewCellMain.h"
 
-static NSString * const kGPAPIKey = @"api key";
+//
+// Please build your personal RKLIBKeys.h  files
+// static NSString * const kGPAPIKey = @"api key";
+//
+#import "RKLIBKeys.h"
 
 @interface RKLIBViewController ()
 
@@ -40,18 +34,26 @@ static NSString * const kGPAPIKey = @"api key";
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // init data structure
 	_dataStructure = [[NSMutableArray alloc] init];
 
+    // setup data sets
 	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl, kObjectManager: [self GGCObjectManager] };
 
 	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl, kObjectManager: [self GPObjectManager] };
 
+    // make a google group
 	NSMutableArray *googleArray = [[NSMutableArray alloc] init];
-
 	[googleArray addObject:dateSet1];
 	[googleArray addObject:dateSet2];
 
+    // add to data structure
 	[self.dataStructure addObject:googleArray];
+    
+    
+    UINib *nib = [ UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle] ];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +61,11 @@ static NSString * const kGPAPIKey = @"api key";
 	// Dispose of any resources that can be recreated.
 }
 
+/*!
+ *  Configure a RKObjectManager for Google Geocoding requests.
+ *
+ *  @return A RKObjectManager for Google Geocoding API.
+ */
 - (RKObjectManager *)GGCObjectManager {
 	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:kGGCAPIUrl]]];
 
@@ -70,6 +77,11 @@ static NSString * const kGPAPIKey = @"api key";
 	return objectManager;
 }
 
+/*!
+ *  Configure a RKObjectManager for Google Places Autocomplete requests.
+ *
+ *  @return A RKObjectManager for  Google Places Autocomplete API.
+ */
 - (RKObjectManager *)GPObjectManager {
 	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:kGPAPIUrl]]];
 
@@ -93,7 +105,7 @@ static NSString * const kGPAPIKey = @"api key";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = nil;
 
-	cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell" forIndexPath:indexPath];
+	cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RKLIBTableViewCellMain class]) forIndexPath:indexPath];
 
 	NSArray *array = _dataStructure[indexPath.section];
 	id object = array[indexPath.row];
@@ -116,8 +128,8 @@ static NSString * const kGPAPIKey = @"api key";
 	NSDictionary *dict = object;
 	NSString *kind = [dict objectForKey:kLongTitleKey];
 	RKObjectManager *objectManager = [dict objectForKey:kObjectManager];
-	UIStoryboard *s = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:[NSBundle mainBundle]];
-	RKLIBTableViewController *tvc = [s instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
+
+	RKLIBTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
 	// cancel all pending requests
 	[[RKObjectManager sharedManager] cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:kJson];
 

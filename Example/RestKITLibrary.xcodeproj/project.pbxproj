@@ -21,6 +21,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		686083974494478D85A4DD4F /* libPods-RestKITLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EE676B0D924CC697930963 /* libPods-RestKITLibrary.a */; };
+		CD0A486619C77A4E004CEA62 /* RKLIBTableViewCellMain.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */; };
+		CD0A486719C77A4E004CEA62 /* RKLIBTableViewCellMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */; };
 		CD5D060D199D59610076986D /* RKLIBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D060C199D59610076986D /* RKLIBTableViewController.m */; };
 		CD9ADD0C19C632670028FC91 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9ADD0B19C632670028FC91 /* XCTest.framework */; };
 		CD9ADD0D19C632830028FC91 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9ADD0B19C632670028FC91 /* XCTest.framework */; };
@@ -67,6 +69,9 @@
 		8FD56FA79CC049C4880BB4C9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C909A7DAB695431ABC954E7D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CD015C2019A5B7EB0008BB96 /* Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		CD0A486319C77A4E004CEA62 /* RKLIBTableViewCellMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBTableViewCellMain.h; sourceTree = "<group>"; };
+		CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBTableViewCellMain.m; sourceTree = "<group>"; };
+		CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKLIBTableViewCellMain.xib; sourceTree = "<group>"; };
 		CD5D060B199D59610076986D /* RKLIBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBTableViewController.h; sourceTree = "<group>"; };
 		CD5D060C199D59610076986D /* RKLIBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBTableViewController.m; sourceTree = "<group>"; };
 		CD9ADD0B19C632670028FC91 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -205,6 +210,9 @@
 			children = (
 				CD5D060B199D59610076986D /* RKLIBTableViewController.h */,
 				CD5D060C199D59610076986D /* RKLIBTableViewController.m */,
+				CD0A486319C77A4E004CEA62 /* RKLIBTableViewCellMain.h */,
+				CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */,
+				CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				CD9ADD1119C6394D0028FC91 /* ggc_file1.json in Resources */,
+				CD0A486719C77A4E004CEA62 /* RKLIBTableViewCellMain.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* RKLIBAppDelegate.m in Sources */,
+				CD0A486619C77A4E004CEA62 /* RKLIBTableViewCellMain.m in Sources */,
 				6003F5A7195388D20070C39A /* RKLIBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				CD5D060D199D59610076986D /* RKLIBTableViewController.m in Sources */,

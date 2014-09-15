@@ -9,6 +9,7 @@
 #import "RKLIBTableViewController.h"
 #import <RestKit/RestKit.h>
 #import <RestKITLibrary/RKLIBGGC.h>
+#import "RKLIBTableViewCellMain.h"
 
 @implementation RKLIBTableViewController
 
@@ -18,6 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataStructure = [[NSMutableArray alloc] init];
+    
+    UINib *nib = [ UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle] ];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +49,7 @@
 {
     UITableViewCell *cell = nil;
     
-    cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RKLIBTableViewCellMain class]) forIndexPath:indexPath];
     
     NSArray *array = _dataStructure[indexPath.section];
     id object = array[indexPath.row];
@@ -55,6 +59,7 @@
     
        return cell;
 }
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSArray *array = _dataStructure[section];
