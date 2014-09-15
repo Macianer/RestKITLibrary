@@ -9,8 +9,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "RestKITLibrary"
-  s.version          = "0.1.0"
-  s.summary          = "RestKITLibrary represent a library for Restful webservice based on RestKit."
+  s.version          = "0.1.1"
+  s.summary          = "RestKITLibrary represent a library for Restful webservices based on RestKit."
   s.description      = <<-DESC
                        An optional longer descripth
 
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
   s.requires_arc = true
-  s.resources = 'Pod/Assets/*.png'
+#s.resources = 'Pod/Assets/*.png'
 
   s.dependency 'RestKit', '~> 0.23.3'
   s.dependency 'RestKit/Testing', '~> 0.23.3'

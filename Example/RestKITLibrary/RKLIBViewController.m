@@ -14,10 +14,20 @@
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGGC.h>
 #import <RestKITLibrary/RKLIBGP.h>
-#import "RKLIBKeys.h"
 
-// Create typedef for block
-double (^multiplyTwoValues)(double, double);
+//#if kGPAPIKey
+//#elif
+//#import 
+//#endif
+//
+//#if __has_include("RKLIBKeys.h")
+//#define Keys_included
+//#endif
+//#ifndef Keys_included
+//static NSString * const kGPAPIKey = @"api key";
+//#endif
+
+static NSString * const kGPAPIKey = @"api key";
 
 @interface RKLIBViewController ()
 
