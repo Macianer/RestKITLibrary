@@ -8,13 +8,25 @@
 
 #import "RKLIBAppDelegate.h"
 
+#import "RKLIBTableViewController.h"
+
+#import <RestKITLibrary/RKLIBGGCMapper.h>
+#import <RestKITLibrary/RKLIBGPMapper.h>
+
+#import <RestKITLibrary/RKLIBDef.h>
+#import <RestKITLibrary/RKLIBGP.h>
+#import <RestKITLibrary/RKLIBGGC.h>
+
 @implementation RKLIBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     // Override point for customization after application launch.
     return YES;
 }
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

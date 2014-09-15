@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RKLIBTableViewController.h"
 
-@interface RKLIBViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RKLIBViewController : UIViewController <UITableViewDataSource,  UITableViewDelegate>
+@property (nonatomic, strong) NSMutableArray *dataStructure;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
