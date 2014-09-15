@@ -1,13 +1,10 @@
 target 'RestKITLibrary', :exclusive => true do
-  pod "RestKITLibrary", :path => "../"
-  pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
+    pod "RestKITLibrary", :path => "../"
 end
 
 target 'Tests', :exclusive => true do
-  pod "RestKITLibrary", :path => "../"
-  pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
-  pod 'Specta', '~> 0.2.1'
-  pod 'Expecta'
-  pod 'FBSnapshotTestCase'
-  pod 'Expecta+Snapshots'
+    #pod 'Specta', '~> 0.2.1'
+    #pod 'Expecta'
+    #pod 'FBSnapshotTestCase'
+    #pod 'Expecta+Snapshots'
 end
