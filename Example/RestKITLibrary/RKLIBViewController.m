@@ -8,8 +8,8 @@
 
 #import "RKLIBViewController.h"
 
-#import <RestKITLibrary/RKLIBGGCMapper.h>
-#import <RestKITLibrary/RKLIBGPMapper.h>
+#import <RestKITLibrary/RKLIbGGCAPIManager.h>
+#import <RestKITLibrary/RKLIBGPAPIManager.h>
 
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGGC.h>
@@ -39,9 +39,9 @@
 	_dataStructure = [[NSMutableArray alloc] init];
 
     // setup data sets
-	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl, kObjectManager: [self GGCObjectManager] };
+	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl};
 
-	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl, kObjectManager: [self GPObjectManager] };
+	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
 
     // make a google group
 	NSMutableArray *googleArray = [[NSMutableArray alloc] init];
@@ -59,38 +59,6 @@
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
-}
-
-/*!
- *  Configure a RKObjectManager for Google Geocoding requests.
- *
- *  @return A RKObjectManager for Google Geocoding API.
- */
-- (RKObjectManager *)GGCObjectManager {
-	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:kGGCAPIUrl]]];
-
-	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
-
-
-	RKResponseDescriptor *res = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBGGCMappingHelper responseMapping] method:RKRequestMethodGET pathPattern:kJson keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
-	[objectManager addResponseDescriptor:res];
-	return objectManager;
-}
-
-/*!
- *  Configure a RKObjectManager for Google Places Autocomplete requests.
- *
- *  @return A RKObjectManager for  Google Places Autocomplete API.
- */
-- (RKObjectManager *)GPObjectManager {
-	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:kGPAPIUrl]]];
-
-	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
-
-
-	RKResponseDescriptor *res = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBGPMappingHelper responseMapping] method:RKRequestMethodGET pathPattern:kJson keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
-	[objectManager addResponseDescriptor:res];
-	return objectManager;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -127,92 +95,76 @@
 	id object = array[indexPath.row];
 	NSDictionary *dict = object;
 	NSString *kind = [dict objectForKey:kLongTitleKey];
-	RKObjectManager *objectManager = [dict objectForKey:kObjectManager];
+	
 
 	RKLIBTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
-	// cancel all pending requests
-	[[RKObjectManager sharedManager] cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:kJson];
+    
+
 
 	[tvc.activityIndicatorView startAnimating];
 
 	if ([object isKindOfClass:[NSDictionary class]]) {
 		if ([kind compare:kGGCTitleKey] == NSOrderedSame) {
-			NSDictionary *dict = @{ kAddress : @"time square",
-				                    kSensor : kTrue };
+            
+            [[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:nil region:nil success:^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
+                for (RKLIBGGCResult * result in response.results) {
+                    NSMutableArray *array = [[NSMutableArray alloc] init];
+                    [array addObject:result.formattedAddress];
+                    NSMutableString *mString = [[NSMutableString alloc] init];
+                    for (NSString * string in result.types) {
+                        [mString appendString:string];
+                        [mString appendString:@";"];
+                    }
+                    [array addObject:mString];
+                    [array addObject:[result.geometry description]];
+                    
+                    
+                    
+                    [tvc.dataStructure addObject:array];
+                }
+                
+                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+                
+                [tvc.activityIndicatorView stopAnimating];
 
-
-
-
-			[objectManager getObjectsAtPath:kJson
-			                     parameters:dict success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-			    if ([mappingResult.firstObject isKindOfClass:[RKLIBGGCResponse class]]) {
-			        RKLIBGGCResponse *response = mappingResult.firstObject;
-
-			        for (RKLIBGGCResult * result in response.results) {
-			            NSMutableArray *array = [[NSMutableArray alloc] init];
-			            [array addObject:result.formattedAddress];
-			            NSMutableString *mString = [[NSMutableString alloc] init];
-			            for (NSString * string in result.types) {
-			                [mString appendString:string];
-			                [mString appendString:@";"];
-						}
-			            [array addObject:mString];
-			            [array addObject:[result.geometry description]];
-
-
-
-			            [tvc.dataStructure addObject:array];
-					}
-
-			        [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-
-			        [tvc.activityIndicatorView stopAnimating];
-				}
-
-			    //
-			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-			    [tvc.activityIndicatorView stopAnimating];
-			}];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                 [tvc.activityIndicatorView stopAnimating];
+            }];
+          
 
 			[self.navigationController pushViewController:tvc animated:YES];
 		}
 		else if ([kind compare:kGPTitleKey] == NSOrderedSame) {
             
             // setup dictionary
-            NSDictionary *dict = @{ kInput : @"time square",
-                                    kLanguage: @"us",
-                                    @"key": kGPAPIKey};
-
-            // start request
-            [objectManager getObjectsAtPath:kJson
-                                 parameters:dict success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                     if ([mappingResult.firstObject isKindOfClass:[RKLIBGPResponse class]])
-                                     {
-                                         RKLIBGPResponse *response = mappingResult.firstObject;
-                                         for (RKLIBGPPrediction * predictions in response.predictions) {
-                                             NSMutableArray *array = [[NSMutableArray alloc] init];
-                                             [array addObject:predictions.predictionDescription];
-                                             NSMutableString *mString = [[NSMutableString alloc] init];
-                                             for (NSString * string in predictions.types) {
-                                                 [mString appendString:string];
-                                                 [mString appendString:@";"];
-                                             }
-                                             [array addObject:mString];
-                                             [array addObject:predictions.predictionId];
-                                             
-                                             
-                                             
-                                             [tvc.dataStructure addObject:array];
-                                         }
-                                         
-                                         [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-                                     }
-                                     [tvc.activityIndicatorView stopAnimating];
-                                     //
-                                 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                     [tvc.activityIndicatorView stopAnimating];
-                                 }];
-                                     [self.navigationController pushViewController:tvc animated:YES];
+          
+            [[RKLIBGPAPIManager sharedMapper] getInput:@"time square" key:kGPAPIKey offset:0 location:nil radius:0 language:@"us" types:nil components:nil success:^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
+        
+                for (RKLIBGPPrediction * predictions in response.predictions) {
+                    NSMutableArray *array = [[NSMutableArray alloc] init];
+                    [array addObject:predictions.predictionDescription];
+                    NSMutableString *mString = [[NSMutableString alloc] init];
+                    for (NSString * string in predictions.types) {
+                        [mString appendString:string];
+                        [mString appendString:@";"];
+                    }
+                    [array addObject:mString];
+                    [array addObject:predictions.predictionId];
+                    
+                    
+                    
+                    [tvc.dataStructure addObject:array];
+                }
+                
+                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+                 [tvc.activityIndicatorView stopAnimating];
+            
+           
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [tvc.activityIndicatorView stopAnimating];
+            }];
+        
+            [self.navigationController pushViewController:tvc animated:YES];
 
 
 		}
