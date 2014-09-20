@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface RKLIBGPResponse : NSObject
-@property (nonatomic ,strong ) NSString *status;
-@property (nonatomic ,strong ) NSArray *predictions;
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSArray *predictions;
 @end

@@ -18,9 +18,9 @@
 
 
 
-static NSString * const kGPAPIUrl = @"https://maps.googleapis.com/maps/api/place/autocomplete/";
+static NSString *const kGPAPIUrl = @"https://maps.googleapis.com/maps/api/place/autocomplete/";
 
-static NSString * const kGPTitleKey = @"Google Place Autocomplete API";
+static NSString *const kGPTitleKey = @"Google Place Autocomplete API";
 
 
 

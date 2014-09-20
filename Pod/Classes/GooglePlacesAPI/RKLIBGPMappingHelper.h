@@ -12,8 +12,8 @@
 
 @interface RKLIBGPMappingHelper : NSObject
 
-+ (RKObjectMapping *) responseMapping;
-+ (RKObjectMapping *) predictionMapping;
-+ (RKObjectMapping *) matchedSubstringMapping;
-+ (RKObjectMapping *) termMapping;
++ (RKObjectMapping *)responseMapping;
++ (RKObjectMapping *)predictionMapping;
++ (RKObjectMapping *)matchedSubstringMapping;
++ (RKObjectMapping *)termMapping;
 @end

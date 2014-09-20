@@ -10,8 +10,8 @@
 
 @implementation RKLIBGGCViewport
 
--(NSString *)description
-{
-    return [NSString stringWithFormat:@"[southwest: %@, northwest: %@]", [self.southwest description], [self.northeast description]];
+- (NSString *)description {
+	return [NSString stringWithFormat:@"[southwest: %@, northwest: %@]", [self.southwest description], [self.northeast description]];
 }
+
 @end

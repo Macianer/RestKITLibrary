@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RKLIBGGCResult.h"
 @interface RKLIBGGCResponse : NSObject
-@property (nonatomic ,strong ) NSString *status;
-@property (nonatomic ,strong ) NSArray *results;
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSArray *results;
 @end

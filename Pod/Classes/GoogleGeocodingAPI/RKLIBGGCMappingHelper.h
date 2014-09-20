@@ -7,6 +7,8 @@
 //
 
 // https://developers.google.com/maps/documentation/geocoding/
+//
+
 #import <Foundation/Foundation.h>
 #import "RKLIBGGCGeometry.h"
 #import "RKLIBGGCLocation.h"
@@ -16,12 +18,16 @@
 #import "RKLIBGGCAddressComponent.h"
 #import <RestKit/RestKit.h>
 
+/*!
+ * @brief Deseri
+ *  https://developers.google.com/maps/documentation/geocoding/#JSON
+ */
 @interface RKLIBGGCMappingHelper : NSObject
 
-+ (RKObjectMapping *) responseMapping;
-+ (RKObjectMapping *) resultMapping;
-+ (RKObjectMapping *) adressComponentMapping;
-+ (RKObjectMapping *) locationMapping;
-+ (RKObjectMapping *) viewportMapping;
-+ (RKObjectMapping *) geometryMapping;
++ (RKObjectMapping *)responseMapping;
++ (RKObjectMapping *)resultMapping;
++ (RKObjectMapping *)adressComponentMapping;
++ (RKObjectMapping *)locationMapping;
++ (RKObjectMapping *)viewportMapping;
++ (RKObjectMapping *)geometryMapping;
 @end

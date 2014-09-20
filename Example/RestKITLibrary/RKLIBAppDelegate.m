@@ -10,8 +10,8 @@
 
 #import "RKLIBTableViewController.h"
 
-#import <RestKITLibrary/RKLIBGGCMapper.h>
-#import <RestKITLibrary/RKLIBGPMapper.h>
+#import <RestKITLibrary/RKLIBGGCAPIManager.h>
+#import <RestKITLibrary/RKLIBGPAPIManager.h>
 
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGP.h>

@@ -1,5 +1,6 @@
 target 'RestKITLibrary', :exclusive => true do
-    pod "RestKITLibrary", :path => "../"
+    pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
+    pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
 end
 
 target 'Tests', :exclusive => true do

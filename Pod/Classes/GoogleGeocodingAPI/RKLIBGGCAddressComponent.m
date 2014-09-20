@@ -10,16 +10,15 @@
 
 @implementation RKLIBGGCAddressComponent
 
--(NSString *)description
-{
-    NSMutableString *mString = [[NSMutableString alloc] init];
-    for (NSString *string in self.types)
-    {
-        [mString appendString:string];
-        if([self.types indexOfObject:string] != self.types.count)
-            [mString appendString:@";"];
-    }
+- (NSString *)description {
+	NSMutableString *mString = [[NSMutableString alloc] init];
+	for (NSString *string in self.types) {
+		[mString appendString:string];
+		if ([self.types indexOfObject:string] != self.types.count)
+			[mString appendString:@";"];
+	}
 
-    return [NSString stringWithFormat:@"%@,%@,%@", self.longName, self.shortName, mString];
+	return [NSString stringWithFormat:@"%@,%@,%@", self.longName, self.shortName, mString];
 }
+
 @end

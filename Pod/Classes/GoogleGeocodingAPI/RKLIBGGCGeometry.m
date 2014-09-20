@@ -10,8 +10,8 @@
 
 @implementation RKLIBGGCGeometry
 
--(NSString *)description
-{
-    return [NSString stringWithFormat:@"[location: %@; [locationType: %@]; viewport %@]",[self.location description],self.locationType, [self.viewport description]  ];
+- (NSString *)description {
+	return [NSString stringWithFormat:@"[location: %@; [locationType: %@]; viewport %@]", [self.location description], self.locationType, [self.viewport description]];
 }
+
 @end

@@ -10,8 +10,8 @@
 
 @implementation RKLIBGGCResponse
 
--(NSString *)description
-{
-    return [NSString stringWithFormat:@"[status: %@; result: %@]",self.status, [self.results description]];
+- (NSString *)description {
+	return [NSString stringWithFormat:@"[status: %@; result: %@]", self.status, [self.results description]];
 }
+
 @end

@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'RestKit', '~> 0.23.3'
   s.dependency 'RestKit/Testing', '~> 0.23.3'
+
   s.subspec 'Base' do |bs|
     bs.public_header_files = 'Pod/Classes/*.h'
     bs.source_files = 'Pod/Classes/*.{h,m}'

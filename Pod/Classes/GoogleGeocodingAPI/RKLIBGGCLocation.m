@@ -10,8 +10,8 @@
 
 @implementation RKLIBGGCLocation
 
--(NSString *)description
-{
-    return [NSString stringWithFormat:@"[latitude:%@ ;longitude: %@]",self.lat, self.lng];
+- (NSString *)description {
+	return [NSString stringWithFormat:@"[latitude:%@ ;longitude: %@]", self.lat, self.lng];
 }
+
 @end
