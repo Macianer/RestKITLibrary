@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "RKLIBDef.h"
 #import "RKLIBGP.h"
+#import <CoreLocation/CoreLocation.h>
 @class RKObjectManager;
 
 /*!
@@ -23,7 +24,7 @@
 - (void)getInput:(NSString *)input
              key:(NSString *)key
           offset:(NSUInteger)offset
-        location:(NSValue *)location
+        location:(CLLocationCoordinate2D)location
           radius:(float)radius
         language:(NSString *)language
            types:(NSArray *)types

@@ -7,6 +7,7 @@
 //
 
 #import "RKLIBGPAPIManager.h"
+#import "RKLIBDeviceHelper.h"
 
 @implementation RKLIBGPAPIManager
 {
@@ -45,6 +46,7 @@
 	RKResponseDescriptor *res = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBGPMappingHelper responseMapping] method:RKRequestMethodGET pathPattern:kJson keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 	[objectManager addResponseDescriptor:res];
 	_objectManager = objectManager;
+
 }
 
 /*!
@@ -64,7 +66,7 @@
 - (void)getInput:(NSString *)input
              key:(NSString *)key
           offset:(NSUInteger)offset
-        location:(NSValue *)location
+        location:(CLLocationCoordinate2D) location
           radius:(float)radius
         language:(NSString *)language
            types:(NSArray *)types
@@ -81,18 +83,19 @@
 		offsetString = [NSString stringWithFormat:@"%d", offset];
 	}
 
-	if (location) {
-		CGPoint point = location.CGPointValue;
-		locationString = [NSString stringWithFormat:@"%0.4f,%0.4f", point.x, point.y];
+	if (location.latitude != NSNotFound && location.longitude != NSNotFound) {
+		
+		locationString = [NSString stringWithFormat:@"%0.4f,%0.4f", location.latitude, location.longitude];
 	}
 	if (radius > 0.0 && !isnan(radius) && !isinf(radius)) {
 		radiusString = [NSString stringWithFormat:@"%0.2f", radius];
 	}
+    
 	if (types.count > 0) {
-		typesString = @"";
+		typesString = [RKLIBDeviceHelper separatedStringFromArray:types WithSeparationString:@","];
 	}
 	if (components.count > 0) {
-		componentsString = @"";
+        componentsString = [RKLIBDeviceHelper separatedStringFromArray:components WithSeparationString:@","];
 	}
 	[self getByStringInput:input key:key offset:offsetString location:locationString radius:radiusString language:language types:typesString components:componentsString success:success failure:failure];
 }
@@ -122,13 +125,13 @@
 		[dict addEntriesFromDictionary:@{ kKey : key }];
 
 	if (offset)
-		[dict addEntriesFromDictionary:@{ @"offset": offset }];
+		[dict addEntriesFromDictionary:@{ kOffset : offset }];
 
 	if (location)
-		[dict addEntriesFromDictionary:@{ @"location": location }];
+		[dict addEntriesFromDictionary:@{ kLocation : location }];
 
 	if (radius)
-		[dict addEntriesFromDictionary:@{ @"radius": radius }];
+		[dict addEntriesFromDictionary:@{ kRadius: radius }];
 
 	if (language)
 		[dict addEntriesFromDictionary:@{ kLanguage : language }];

@@ -14,4 +14,5 @@
 @property (assign) float systemVersion;
 + (instancetype)sharedHelperInstance;
 +(NSString *) currentlanguageCode;
++(NSString *) separatedStringFromArray:(NSArray *) strings WithSeparationString: (NSString *) sep;
 @end

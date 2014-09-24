@@ -42,6 +42,16 @@
 {
     return [NSLocale canonicalLanguageIdentifierFromString: [NSLocale preferredLanguages].firstObject];
 }
+
++(NSString *) separatedStringFromArray:(NSArray *) strings WithSeparationString: (NSString *) sep
+{
+    NSMutableString *mString = [[NSMutableString alloc] init];
+    for (NSString *string in strings) {
+        [mString appendString:string];
+        [mString appendString:sep];
+    }
+    return [mString substringWithRange:NSMakeRange(mString.length-sep.length, sep.length)];
+}
 - (NSString *) platform{
     int mib[2];
     size_t len;
