@@ -14,7 +14,7 @@
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGGC.h>
 #import <RestKITLibrary/RKLIBGP.h>
-
+#import <RestKITLibrary/RKLIBDeviceHelper.h>
 #import "RKLIBTableViewCellMain.h"
 
 //
@@ -106,7 +106,7 @@
 	if ([object isKindOfClass:[NSDictionary class]]) {
 		if ([kind compare:kGGCTitleKey] == NSOrderedSame) {
             
-            [[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:nil region:nil success:^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
+            [[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success:^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
                 for (RKLIBGGCResult * result in response.results) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
                     [array addObject:result.formattedAddress];
@@ -138,7 +138,7 @@
             
             // setup dictionary
           
-            [[RKLIBGPAPIManager sharedMapper] getInput:@"time square" key:kGPAPIKey offset:0 location:nil radius:0 language:@"us" types:nil components:nil success:^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
+            [[RKLIBGPAPIManager sharedMapper] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language: [RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success:^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
         
                 for (RKLIBGPPrediction * predictions in response.predictions) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
