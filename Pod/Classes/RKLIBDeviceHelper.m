@@ -38,6 +38,10 @@
 	return NO;
 }
 
++(NSString *) currentlanguageCode
+{
+    return [NSLocale canonicalLanguageIdentifierFromString: [NSLocale preferredLanguages].firstObject];
+}
 - (NSString *) platform{
     int mib[2];
     size_t len;
@@ -53,4 +57,5 @@
     free(machine);
     return platform;
 }
+
 @end

@@ -13,4 +13,5 @@
 @property (assign) BOOL hasRetinaDisplay;
 @property (assign) float systemVersion;
 + (instancetype)sharedHelperInstance;
++(NSString *) currentlanguageCode;
 @end
