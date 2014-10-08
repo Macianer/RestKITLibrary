@@ -60,20 +60,19 @@
  *  @param bounds     The bounding box d . "This parameter will only influence, not fully restrict, results from the geocoder" (see https://developers.google.com/maps/documentation/geocoding/).
  *  @param key        //
  *  @param language   //
- *  @param region     
+ *  @param region
  *  @param success    <#success description#>
  *  @param failure    <#failure description#>
  */
 - (void)getByStringAddress:(NSString *)address
-        components:(NSString *)components
-            bounds:(NSString *)bounds
-               key:(NSString *)key
-          language:(NSString *)language
-            region:(NSString *)region
-           success:(void (^)(RKObjectRequestOperation *operation, RKLIBGGCResponse *response))success
-           failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
-	
-    NSAssert(address || components,  @"Required parameters are not set");
+                components:(NSString *)components
+                    bounds:(NSString *)bounds
+                       key:(NSString *)key
+                  language:(NSString *)language
+                    region:(NSString *)region
+                   success:(void (^)(RKObjectRequestOperation *operation, RKLIBGGCResponse *response))success
+                   failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+	NSAssert(address || components,  @"Required parameters are not set");
 
 	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 

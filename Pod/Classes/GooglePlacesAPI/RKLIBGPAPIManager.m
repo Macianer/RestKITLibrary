@@ -14,7 +14,7 @@
 	NSString *_key;
 }
 
-+ (instancetype)sharedMapper {
++ (instancetype)sharedManager {
 	static RKLIBGPAPIManager *sharedMapper = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
@@ -46,7 +46,6 @@
 	RKResponseDescriptor *res = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBGPMappingHelper responseMapping] method:RKRequestMethodGET pathPattern:kJson keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 	[objectManager addResponseDescriptor:res];
 	_objectManager = objectManager;
-
 }
 
 /*!
@@ -66,7 +65,7 @@
 - (void)getInput:(NSString *)input
              key:(NSString *)key
           offset:(NSUInteger)offset
-        location:(CLLocationCoordinate2D) location
+        location:(CLLocationCoordinate2D)location
           radius:(float)radius
         language:(NSString *)language
            types:(NSArray *)types
@@ -84,18 +83,17 @@
 	}
 
 	if (location.latitude != NSNotFound && location.longitude != NSNotFound) {
-		
 		locationString = [NSString stringWithFormat:@"%0.4f,%0.4f", location.latitude, location.longitude];
 	}
 	if (radius > 0.0 && !isnan(radius) && !isinf(radius)) {
 		radiusString = [NSString stringWithFormat:@"%0.2f", radius];
 	}
-    
+
 	if (types.count > 0) {
 		typesString = [RKLIBDeviceHelper separatedStringFromArray:types WithSeparationString:@","];
 	}
 	if (components.count > 0) {
-        componentsString = [RKLIBDeviceHelper separatedStringFromArray:components WithSeparationString:@","];
+		componentsString = [RKLIBDeviceHelper separatedStringFromArray:components WithSeparationString:@","];
 	}
 	[self getByStringInput:input key:key offset:offsetString location:locationString radius:radiusString language:language types:typesString components:componentsString success:success failure:failure];
 }

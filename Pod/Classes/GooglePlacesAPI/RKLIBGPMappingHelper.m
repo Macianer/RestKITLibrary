@@ -7,6 +7,7 @@
 //
 
 #import "RKLIBGPMappingHelper.h"
+#import "RKLIBGPResponse.h"
 
 
 @implementation RKLIBGPMappingHelper

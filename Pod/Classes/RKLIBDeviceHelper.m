@@ -15,15 +15,15 @@
 @implementation RKLIBDeviceHelper
 
 + (instancetype)sharedHelperInstance {
-    static RKLIBDeviceHelper *sharedHelperInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedHelperInstance = [[RKLIBDeviceHelper alloc] init];
-        sharedHelperInstance.hasGPSSensor = [self hasCarrierName];
-        sharedHelperInstance.hasRetinaDisplay = [UIScreen mainScreen].scale > 1;
-        sharedHelperInstance.systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
-    });
-    return sharedHelperInstance;
+	static RKLIBDeviceHelper *sharedHelperInstance = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+	    sharedHelperInstance = [[RKLIBDeviceHelper alloc] init];
+	    sharedHelperInstance.hasGPSSensor = [self hasCarrierName];
+	    sharedHelperInstance.hasRetinaDisplay = [UIScreen mainScreen].scale > 1;
+	    sharedHelperInstance.systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
+	});
+	return sharedHelperInstance;
 }
 
 + (BOOL)hasCarrierName {
@@ -38,34 +38,33 @@
 	return NO;
 }
 
-+(NSString *) currentlanguageCode
-{
-    return [NSLocale canonicalLanguageIdentifierFromString: [NSLocale preferredLanguages].firstObject];
++ (NSString *)currentlanguageCode {
+	return [NSLocale canonicalLanguageIdentifierFromString:[NSLocale preferredLanguages].firstObject];
 }
 
-+(NSString *) separatedStringFromArray:(NSArray *) strings WithSeparationString: (NSString *) sep
-{
-    NSMutableString *mString = [[NSMutableString alloc] init];
-    for (NSString *string in strings) {
-        [mString appendString:string];
-        [mString appendString:sep];
-    }
-    return [mString substringWithRange:NSMakeRange(mString.length-sep.length, sep.length)];
++ (NSString *)separatedStringFromArray:(NSArray *)strings WithSeparationString:(NSString *)sep {
+	NSMutableString *mString = [[NSMutableString alloc] init];
+	for (NSString *string in strings) {
+		[mString appendString:string];
+		[mString appendString:sep];
+	}
+	return [mString substringWithRange:NSMakeRange(mString.length - sep.length, sep.length)];
 }
-- (NSString *) platform{
-    int mib[2];
-    size_t len;
-    char *machine;
-    
-    mib[0] = CTL_HW;
-    mib[1] = HW_MACHINE;
-    sysctl(mib, 2, NULL, &len, NULL, 0);
-    machine = malloc(len);
-    sysctl(mib, 2, machine, &len, NULL, 0);
-    
-    NSString *platform = [NSString stringWithCString:machine encoding:NSASCIIStringEncoding];
-    free(machine);
-    return platform;
+
+- (NSString *)platform {
+	int mib[2];
+	size_t len;
+	char *machine;
+
+	mib[0] = CTL_HW;
+	mib[1] = HW_MACHINE;
+	sysctl(mib, 2, NULL, &len, NULL, 0);
+	machine = malloc(len);
+	sysctl(mib, 2, machine, &len, NULL, 0);
+
+	NSString *platform = [NSString stringWithCString:machine encoding:NSASCIIStringEncoding];
+	free(machine);
+	return platform;
 }
 
 @end

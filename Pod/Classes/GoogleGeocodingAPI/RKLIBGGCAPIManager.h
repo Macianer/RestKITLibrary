@@ -19,11 +19,11 @@
 + (instancetype)sharedManager;
 
 - (void)getByStringAddress:(NSString *)address
-        components:(NSString *)components
-            bounds:(NSString *)bounds
-               key:(NSString *)key
-          language:(NSString *)language
-            region:(NSString *)region
-           success:(void (^)(RKObjectRequestOperation *operation, RKLIBGGCResponse *response))success
-           failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+                components:(NSString *)components
+                    bounds:(NSString *)bounds
+                       key:(NSString *)key
+                  language:(NSString *)language
+                    region:(NSString *)region
+                   success:(void (^)(RKObjectRequestOperation *operation, RKLIBGGCResponse *response))success
+                   failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 @end

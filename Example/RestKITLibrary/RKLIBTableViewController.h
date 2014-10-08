@@ -10,7 +10,7 @@
 
 @class RKLIBGGCResult;
 
-@interface RKLIBTableViewController : UIViewController<UITableViewDataSource,  UITableViewDelegate>
+@interface RKLIBTableViewController : UIViewController <UITableViewDataSource,  UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 

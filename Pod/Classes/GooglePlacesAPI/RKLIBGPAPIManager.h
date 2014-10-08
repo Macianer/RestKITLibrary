@@ -20,7 +20,7 @@
  */
 @interface RKLIBGPAPIManager : NSObject
 @property (nonatomic, strong) RKObjectManager *objectManager;
-+ (instancetype)sharedMapper;
++ (instancetype)sharedManager;
 - (void)getInput:(NSString *)input
              key:(NSString *)key
           offset:(NSUInteger)offset

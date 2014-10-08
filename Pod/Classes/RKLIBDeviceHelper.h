@@ -13,6 +13,6 @@
 @property (assign) BOOL hasRetinaDisplay;
 @property (assign) float systemVersion;
 + (instancetype)sharedHelperInstance;
-+(NSString *) currentlanguageCode;
-+(NSString *) separatedStringFromArray:(NSArray *) strings WithSeparationString: (NSString *) sep;
++ (NSString *)currentlanguageCode;
++ (NSString *)separatedStringFromArray:(NSArray *)strings WithSeparationString:(NSString *)sep;
 @end

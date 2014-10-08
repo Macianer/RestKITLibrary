@@ -10,7 +10,6 @@
 #import "RKLIBGPMatchedSubstring.h"
 #import "RKLIBGPPrediction.h"
 #import "RKLIBGPResponse.h"
-#import "RKLIBGPResponse.h"
 #import "RKLIBGPTerm.h"
 
 #ifndef Pods_RKLIBGP_h
