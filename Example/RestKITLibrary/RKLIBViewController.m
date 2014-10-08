@@ -14,6 +14,7 @@
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGGC.h>
 #import <RestKITLibrary/RKLIBGP.h>
+#import <RestKITLibrary/RKLIBRM.h>
 #import <RestKITLibrary/RKLIBDeviceHelper.h>
 #import "RKLIBTableViewCellMain.h"
 
@@ -34,26 +35,32 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    // init data structure
+
+	// init data structure
 	_dataStructure = [[NSMutableArray alloc] init];
 
-    // setup data sets
-	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl};
+	// setup data sets
+	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl };
 
 	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
 
-    // make a google group
+	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
+NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
+	// make a google group
 	NSMutableArray *googleArray = [[NSMutableArray alloc] init];
 	[googleArray addObject:dateSet1];
 	[googleArray addObject:dateSet2];
 
-    // add to data structure
+	// add to data structure
 	[self.dataStructure addObject:googleArray];
-    
-    
-    UINib *nib = [ UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle] ];
-    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
+    NSMutableArray *redmineArray = [[NSMutableArray alloc] init];
+    [redmineArray addObject:dateSet3];
+    [redmineArray addObject:dateSet4];
+	// add to data structure
+	[self.dataStructure addObject:redmineArray];
+
+	UINib *nib = [UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle]];
+	[self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,79 +102,128 @@
 	id object = array[indexPath.row];
 	NSDictionary *dict = object;
 	NSString *kind = [dict objectForKey:kLongTitleKey];
-	
+
 
 	RKLIBTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
-    
+
 
 
 	[tvc.activityIndicatorView startAnimating];
 
 	if ([object isKindOfClass:[NSDictionary class]]) {
 		if ([kind compare:kGGCTitleKey] == NSOrderedSame) {
-            
-            [[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success:^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
-                for (RKLIBGGCResult * result in response.results) {
-                    NSMutableArray *array = [[NSMutableArray alloc] init];
-                    [array addObject:result.formattedAddress];
-                    NSMutableString *mString = [[NSMutableString alloc] init];
-                    for (NSString * string in result.types) {
-                        [mString appendString:string];
-                        [mString appendString:@";"];
-                    }
-                    [array addObject:mString];
-                    [array addObject:[result.geometry description]];
-                    
-                    
-                    
-                    [tvc.dataStructure addObject:array];
-                }
-                
-                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-                
-                [tvc.activityIndicatorView stopAnimating];
+			[[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success: ^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
+			    for (RKLIBGGCResult * result in response.results) {
+			        NSMutableArray *array = [[NSMutableArray alloc] init];
+			        [array addObject:result.formattedAddress];
+			        NSMutableString *mString = [[NSMutableString alloc] init];
+			        for (NSString * string in result.types) {
+			            [mString appendString:string];
+			            [mString appendString:@";"];
+					}
+			        [array addObject:mString];
+			        [array addObject:[result.geometry description]];
 
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                 [tvc.activityIndicatorView stopAnimating];
-            }];
-          
+
+
+			        [tvc.dataStructure addObject:array];
+				}
+
+			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+
+			    [tvc.activityIndicatorView stopAnimating];
+			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+			    [tvc.activityIndicatorView stopAnimating];
+			}];
+
 
 			[self.navigationController pushViewController:tvc animated:YES];
 		}
 		else if ([kind compare:kGPTitleKey] == NSOrderedSame) {
+			// setup dictionary
+
+			[[RKLIBGPAPIManager sharedManager] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language:[RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success: ^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
+			    for (RKLIBGPPrediction * predictions in response.predictions) {
+			        NSMutableArray *array = [[NSMutableArray alloc] init];
+			        [array addObject:predictions.predictionDescription];
+			        NSMutableString *mString = [[NSMutableString alloc] init];
+			        for (NSString * string in predictions.types) {
+			            [mString appendString:string];
+			            [mString appendString:@";"];
+					}
+			        [array addObject:mString];
+			        [array addObject:predictions.predictionId];
+
+
+
+			        [tvc.dataStructure addObject:array];
+				}
+
+			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+			    [tvc.activityIndicatorView stopAnimating];
+			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+			    [tvc.activityIndicatorView stopAnimating];
+			}];
+
+			[self.navigationController pushViewController:tvc animated:YES];
+		}
+		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
             
-            // setup dictionary
-          
-            [[RKLIBGPAPIManager sharedMapper] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language: [RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success:^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
-        
-                for (RKLIBGPPrediction * predictions in response.predictions) {
+            [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+			[[RKLIBRMAPIManager sharedManager] getAllProjectsWithSuccess:^(RKObjectRequestOperation *operation, NSArray *projects) {
+                
+                for (RKLIBRMProject * project in projects) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
-                    [array addObject:predictions.predictionDescription];
-                    NSMutableString *mString = [[NSMutableString alloc] init];
-                    for (NSString * string in predictions.types) {
-                        [mString appendString:string];
-                        [mString appendString:@";"];
-                    }
-                    [array addObject:mString];
-                    [array addObject:predictions.predictionId];
+                    [array addObject:project.identifier];
+                   
+                    [array addObject:project.projectId];
                     
                     
                     
                     [tvc.dataStructure addObject:array];
                 }
-                
                 [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-                 [tvc.activityIndicatorView stopAnimating];
-            
-           
+                [tvc.activityIndicatorView stopAnimating];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [tvc.activityIndicatorView stopAnimating];
             }];
-        
-            [self.navigationController pushViewController:tvc animated:YES];
+            UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
 
-
+            
+           
+            [tvc setToolbarItems:@[createProject]];
+			[self.navigationController pushViewController:tvc animated:YES];
+             [self.navigationController setToolbarHidden:NO];
 		}
+        else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
+            
+            [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+            [[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess:^(RKObjectRequestOperation *operation, NSArray *issues) {
+                
+                for (RKLIBRMIssue * issue in issues) {
+                    NSMutableArray *array = [[NSMutableArray alloc] init];
+                    [array addObject:[NSString stringWithFormat:@"%@",issue.issueId]];
+                    [array addObject:issue.descriptionString];
+                    [array addObject:issue.subject];
+                    
+                    
+                    [tvc.dataStructure addObject:array];
+                }
+                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+                [tvc.activityIndicatorView stopAnimating];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [tvc.activityIndicatorView stopAnimating];
+            }];
+            UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
+            
+            
+            
+            [tvc setToolbarItems:@[createProject]];
+            [self.navigationController pushViewController:tvc animated:YES];
+            [self.navigationController setToolbarHidden:NO];
+        }
+        
+        
 		else {
 			[tvc.activityIndicatorView stopAnimating];
 		}
@@ -177,10 +233,20 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if (section == 0) {
 		return @"Google API";
-	}
+    }else if (section == 1)
+    {
+        return @"Redmine API";
+    }
 	return @"";
 }
 
-
-
+#pragma mark action
+-(void) createProject
+{
+    [[RKLIBRMAPIManager sharedManager] postProjectWithName:@"test" withIdentifier:@"test" withDescription:@"test" success:^(RKObjectRequestOperation *operation, RKLIBRMProject *project) {
+        //
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        //
+    }];
+}
 @end

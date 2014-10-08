@@ -1,0 +1,850 @@
+{
+  "issues" : [
+    {
+      "id" : 65628,
+      "project" : {
+        "id" : 56787,
+        "name" : "Hotel Neu"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76718,
+        "name" : "Claudia Biederer"
+      },
+      "subject" : "Probleme kein telefon",
+      "description" : "Probleme kein telefon",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "estimated_hours" : 1.0,
+      "created_on" : "2014-10-07T16:45:08Z",
+      "updated_on" : "2014-10-07T16:45:08Z"
+    },
+    {
+      "id" : 65627,
+      "project" : {
+        "id" : 56791,
+        "name" : "Test Dave"
+      },
+      "tracker" : {
+        "id" : 3,
+        "name" : "Support"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76719,
+        "name" : "Dave Jong-A-Lock"
+      },
+      "subject" : "Printer installeren",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T16:40:54Z",
+      "updated_on" : "2014-10-07T16:40:54Z"
+    },
+    {
+      "id" : 65626,
+      "project" : {
+        "id" : 56787,
+        "name" : "Hotel Neu"
+      },
+      "tracker" : {
+        "id" : 3,
+        "name" : "Support"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76718,
+        "name" : "Claudia Biederer"
+      },
+      "assigned_to" : {
+        "id" : 76718,
+        "name" : "Claudia Biederer"
+      },
+      "subject" : "alksjdflkajsdlfkjaslkdfjStörung",
+      "description" : "**Was auch immer",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 100,
+      "estimated_hours" : 1.0,
+      "created_on" : "2014-10-07T16:17:54Z",
+      "updated_on" : "2014-10-07T16:21:18Z"
+    },
+    {
+      "id" : 65625,
+      "project" : {
+        "id" : 56664,
+        "name" : "test77"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76554,
+        "name" : "Joey New"
+      },
+      "category" : {
+        "id" : 10523,
+        "name" : "Mechanik"
+      },
+      "subject" : "Task in Kategorie Mechanik ",
+      "description" : "test",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-11-27",
+      "done_ratio" : 0,
+      "estimated_hours" : 43.0,
+      "created_on" : "2014-10-07T16:11:14Z",
+      "updated_on" : "2014-10-07T16:11:14Z"
+    },
+    {
+      "id" : 65624,
+      "project" : {
+        "id" : 56664,
+        "name" : "test77"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76554,
+        "name" : "Joey New"
+      },
+      "assigned_to" : {
+        "id" : 76554,
+        "name" : "Joey New"
+      },
+      "parent" : {
+        "id" : 65490
+      },
+      "subject" : "Modul zusammenbauen",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-10-31",
+      "done_ratio" : 0,
+      "estimated_hours" : 15.0,
+      "created_on" : "2014-10-07T16:05:49Z",
+      "updated_on" : "2014-10-07T16:06:11Z"
+    },
+    {
+      "id" : 65622,
+      "project" : {
+        "id" : 56786,
+        "name" : "Rhap"
+      },
+      "tracker" : {
+        "id" : 3,
+        "name" : "Support"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76713,
+        "name" : "Jose Colomer"
+      },
+      "assigned_to" : {
+        "id" : 76713,
+        "name" : "Jose Colomer"
+      },
+      "category" : {
+        "id" : 10522,
+        "name" : "Gestión"
+      },
+      "subject" : "Crear documents",
+      "description" : "sasa",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T15:54:28Z",
+      "updated_on" : "2014-10-07T15:54:28Z"
+    },
+    {
+      "id" : 65621,
+      "project" : {
+        "id" : 56786,
+        "name" : "Rhap"
+      },
+      "tracker" : {
+        "id" : 3,
+        "name" : "Support"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76713,
+        "name" : "Jose Colomer"
+      },
+      "assigned_to" : {
+        "id" : 76713,
+        "name" : "Jose Colomer"
+      },
+      "category" : {
+        "id" : 10522,
+        "name" : "Gestión"
+      },
+      "subject" : "Prueba del gestor de tareas",
+      "description" : "Pues eso",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-10-21",
+      "done_ratio" : 20,
+      "created_on" : "2014-10-07T15:51:14Z",
+      "updated_on" : "2014-10-07T16:26:03Z"
+    },
+    {
+      "id" : 65611,
+      "project" : {
+        "id" : 56779,
+        "name" : "CaseStudy"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 7,
+        "name" : "Immediate"
+      },
+      "author" : {
+        "id" : 76704,
+        "name" : "Bob Bobno"
+      },
+      "assigned_to" : {
+        "id" : 76704,
+        "name" : "Bob Bobno"
+      },
+      "subject" : "Gulet un neko nedarit",
+      "description" : "Es apnemos neko nedarit!",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "estimated_hours" : 30.0,
+      "created_on" : "2014-10-07T14:57:15Z",
+      "updated_on" : "2014-10-07T14:57:15Z"
+    },
+    {
+      "id" : 65610,
+      "project" : {
+        "id" : 56774,
+        "name" : "test redmine project"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "assigned_to" : {
+        "id" : 75889,
+        "name" : "a a"
+      },
+      "category" : {
+        "id" : 10518,
+        "name" : "android"
+      },
+      "fixed_version" : {
+        "id" : 5854,
+        "name" : "sprint1"
+      },
+      "parent" : {
+        "id" : 65603
+      },
+      "subject" : "ajout d'un truc",
+      "description" : "vvajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un trucajout d'un truc",
+      "start_date" : "2014-10-08",
+      "done_ratio" : 40,
+      "estimated_hours" : 12.0,
+      "created_on" : "2014-10-07T14:57:11Z",
+      "updated_on" : "2014-10-07T15:17:39Z",
+      "closed_on" : "2014-10-07T15:09:34Z"
+    },
+    {
+      "id" : 65609,
+      "project" : {
+        "id" : 56779,
+        "name" : "CaseStudy"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76704,
+        "name" : "Bob Bobno"
+      },
+      "assigned_to" : {
+        "id" : 76704,
+        "name" : "Bob Bobno"
+      },
+      "subject" : "Subject",
+      "description" : "Bla bla bla",
+      "start_date" : "2014-10-05",
+      "due_date" : "2014-10-08",
+      "done_ratio" : 20,
+      "estimated_hours" : 5.0,
+      "created_on" : "2014-10-07T14:55:17Z",
+      "updated_on" : "2014-10-07T14:56:14Z"
+    },
+    {
+      "id" : 65608,
+      "project" : {
+        "id" : 56780,
+        "name" : "froga project"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "subject" : "dashboard doesn't work properly",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:54:18Z",
+      "updated_on" : "2014-10-07T14:54:18Z"
+    },
+    {
+      "id" : 65607,
+      "project" : {
+        "id" : 56692,
+        "name" : "!!! test project please ignore"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76706,
+        "name" : "Matthew Test"
+      },
+      "subject" : "test",
+      "description" : "test",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:50:39Z",
+      "updated_on" : "2014-10-07T14:50:39Z"
+    },
+    {
+      "id" : 65606,
+      "project" : {
+        "id" : 56778,
+        "name" : "Test Project 1"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76703,
+        "name" : "T Pearl"
+      },
+      "subject" : "A new bug find in activity",
+      "description" : "Some description",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:47:34Z",
+      "updated_on" : "2014-10-07T14:47:34Z"
+    },
+    {
+      "id" : 65603,
+      "project" : {
+        "id" : 56774,
+        "name" : "test redmine project"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "assigned_to" : {
+        "id" : 75889,
+        "name" : "a a"
+      },
+      "fixed_version" : {
+        "id" : 5853,
+        "name" : "version1"
+      },
+      "subject" : "test feature",
+      "description" : "test feature",
+      "start_date" : "2014-10-08",
+      "done_ratio" : 40,
+      "estimated_hours" : 12.0,
+      "created_on" : "2014-10-07T14:42:40Z",
+      "updated_on" : "2014-10-07T15:17:39Z"
+    },
+    {
+      "id" : 65602,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "assigned_to" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "parent" : {
+        "id" : 65601
+      },
+      "subject" : "Unteraufgabe 1",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:42:17Z",
+      "updated_on" : "2014-10-07T14:42:17Z"
+    },
+    {
+      "id" : 65601,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "assigned_to" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "subject" : "Entwicklung",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:41:51Z",
+      "updated_on" : "2014-10-07T14:41:51Z"
+    },
+    {
+      "id" : 65600,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "parent" : {
+        "id" : 65598
+      },
+      "subject" : "2. Vorversuch",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "estimated_hours" : 10.0,
+      "created_on" : "2014-10-07T14:41:05Z",
+      "updated_on" : "2014-10-07T14:41:05Z"
+    },
+    {
+      "id" : 65599,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "assigned_to" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "parent" : {
+        "id" : 65598
+      },
+      "subject" : "1. Vorversuch",
+      "description" : "1. Vorversuch",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-10-10",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:40:33Z",
+      "updated_on" : "2014-10-07T14:44:26Z"
+    },
+    {
+      "id" : 65598,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "assigned_to" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "subject" : "Erstellung Prototyp",
+      "description" : "Erstellung Prototyp",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-10-10",
+      "done_ratio" : 0,
+      "estimated_hours" : 10.0,
+      "created_on" : "2014-10-07T14:39:54Z",
+      "updated_on" : "2014-10-07T14:44:26Z"
+    },
+    {
+      "id" : 65597,
+      "project" : {
+        "id" : 56773,
+        "name" : "Entwicklung"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "assigned_to" : {
+        "id" : 76695,
+        "name" : "Knut Schulz"
+      },
+      "subject" : "Recherche",
+      "description" : "In diesem Pakte wird die Recherche durchgeführt",
+      "start_date" : "2014-10-07",
+      "due_date" : "2014-10-13",
+      "done_ratio" : 0,
+      "estimated_hours" : 10.0,
+      "created_on" : "2014-10-07T14:39:10Z",
+      "updated_on" : "2014-10-07T14:43:19Z"
+    },
+    {
+      "id" : 65596,
+      "project" : {
+        "id" : 56296,
+        "name" : "123sad"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 5,
+        "name" : "High"
+      },
+      "author" : {
+        "id" : 76697,
+        "name" : "jason feingold"
+      },
+      "assigned_to" : {
+        "id" : 76697,
+        "name" : "jason feingold"
+      },
+      "subject" : "Fix Some Stuff",
+      "description" : "Stuff is messed up and stuff.",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:38:17Z",
+      "updated_on" : "2014-10-07T14:38:17Z"
+    },
+    {
+      "id" : 65594,
+      "project" : {
+        "id" : 56770,
+        "name" : "Soccer Fields"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "subject" : "caca",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:17:12Z",
+      "updated_on" : "2014-10-07T14:18:19Z"
+    },
+    {
+      "id" : 65593,
+      "project" : {
+        "id" : 56770,
+        "name" : "Soccer Fields"
+      },
+      "tracker" : {
+        "id" : 2,
+        "name" : "Feature"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "subject" : "Lala",
+      "description" : "\r\n",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:17:02Z",
+      "updated_on" : "2014-10-07T14:17:02Z"
+    },
+    {
+      "id" : 65592,
+      "project" : {
+        "id" : 56770,
+        "name" : "Soccer Fields"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76170,
+        "name" : "ad min"
+      },
+      "subject" : "Ciao",
+      "description" : "",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T14:16:50Z",
+      "updated_on" : "2014-10-07T14:16:50Z"
+    },
+    {
+      "id" : 65591,
+      "project" : {
+        "id" : 56767,
+        "name" : "test fred task 1 sub 1"
+      },
+      "tracker" : {
+        "id" : 1,
+        "name" : "Bug"
+      },
+      "status" : {
+        "id" : 1,
+        "name" : "New"
+      },
+      "priority" : {
+        "id" : 4,
+        "name" : "Normal"
+      },
+      "author" : {
+        "id" : 76687,
+        "name" : "Fred Stoopendaal"
+      },
+      "assigned_to" : {
+        "id" : 76687,
+        "name" : "Fred Stoopendaal"
+      },
+      "subject" : "issuetje",
+      "description" : "een issue in sub 1",
+      "start_date" : "2014-10-07",
+      "done_ratio" : 0,
+      "created_on" : "2014-10-07T13:45:07Z",
+      "updated_on" : "2014-10-07T13:45:07Z"
+    }
+  ],
+  "total_count" : 519,
+  "offset" : 0,
+  "limit" : 25
+}
