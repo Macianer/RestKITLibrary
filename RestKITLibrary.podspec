@@ -48,4 +48,10 @@ Pod::Spec.new do |s|
     ggas.source_files = 'Pod/Classes/GooglePlacesAPI/*.{h,m}'
   end
 
+s.subspec 'RedmineAPI' do |rms|
+rms.dependency 'RestKITLibrary/Base'
+rms.public_header_files = 'Pod/Classes/RedmineAPI/*.h'
+rms.source_files = 'Pod/Classes/RedmineAPI/*.{h,m}'
+end
+
 end
