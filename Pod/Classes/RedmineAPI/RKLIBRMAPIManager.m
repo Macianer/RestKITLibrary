@@ -50,13 +50,13 @@
 
 	RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping] method:RKRequestMethodGET pathPattern:nil keyPath:@"projects" statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
-    RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issueMapping] method:RKRequestMethodGET pathPattern:nil keyPath:@"issues" statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
- 
-    RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
-    
+	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issueMapping] method:RKRequestMethodGET pathPattern:nil keyPath:@"issues" statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+
+	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
+
 	[objectManager addResponseDescriptor:projectResponse];
-    [objectManager addResponseDescriptor:issuesResponse];
-    [objectManager addRequestDescriptor:projectRequest];
+	[objectManager addResponseDescriptor:issuesResponse];
+	[objectManager addRequestDescriptor:projectRequest];
 	_objectManager = objectManager;
 }
 
@@ -66,36 +66,50 @@
  *  @param success <#success description#>
  *  @param failure <#failure description#>
  */
-- (void)getAllProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *projects))success
-                          failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+- (void)getProjectWithId:(NSNumber *)projectId
+              withInclude:(NSString *)includes
+                  Success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
+                  failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects.%@", kJson];
-	[self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-	    if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
-    
-            success(operation, mappingResult.array);
+	NSDictionary *dict  = nil;
+	if (includes)
+		dict = @{ @"include":includes };
+	[self.objectManager getObjectsAtPath:path parameters:dict success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+	    if ([mappingResult.firstObject isKindOfClass:[RKLIBRMProject class]]) {
+	        success(operation, mappingResult.firstObject);
 		}
 	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
 	    failure(operation, error);
 	}];
 }
 
+- (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *projects))success
+                    failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+    NSString *path = [NSString stringWithFormat:@"/projects.%@", kJson];
+    [self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
+            success(operation, mappingResult.array);
+        }
+    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+}
 /*!
  *  Get a single project.
  *
  *  @param success <#success description#>
  *  @param failure <#failure description#>
  */
-- (void)getProjectsWithID:(NSNumber *) projectId success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
-                          failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
-    NSString *path = [NSString stringWithFormat:@"/projects/%@.%@",projectId, kJson];
-    [self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
-            
-            success(operation, mappingResult.firstObject);
-        }
-    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation, error);
-    }];
+- (void)getProjectsWithName:(NSString *)projectName success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
+                    failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", projectName, kJson];
+	[self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+	    if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
+	        success(operation, mappingResult.firstObject);
+		}
+	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+	    failure(operation, error);
+	}];
 }
 
 /*!
@@ -111,29 +125,27 @@
                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects.%@", kJson];
 
-    RKLIBRMProject *project = [RKLIBRMProject new];
-    project.name = name;
-    project.identifier = identifier;
-    project.descriptionString = descriptionString;
-    
+	RKLIBRMProject *project = [RKLIBRMProject new];
+	project.name = name;
+	project.identifier = identifier;
+	project.descriptionString = descriptionString;
+
 	[self.objectManager postObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        success(operation,mappingResult.firstObject);
+	    success(operation, mappingResult.firstObject);
 	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation,error);
+	    failure(operation, error);
 	}];
 }
 
--(void) putWithProject: (RKLIBRMProject* )project uccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject))
-success
-               failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
-{
-     NSString *path = [NSString stringWithFormat:@"/projects/%@.%@",project.projectId, kJson];
-    [self.objectManager putObject:project path:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        success(operation,mappingResult.firstObject);
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation,error);
-    }];
-
+- (void)putWithProject:(RKLIBRMProject *)project uccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject))
+    success
+               failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", project.projectId, kJson];
+	[self.objectManager putObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+	    success(operation, mappingResult.firstObject);
+	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+	    failure(operation, error);
+	}];
 }
 
 - (void)deleteProjectWithID:(NSNumber *)projectId {
@@ -154,16 +166,15 @@ success
  *  @param failure <#failure description#>
  */
 - (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *issues))success
-                          failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
-    NSString *path = [NSString stringWithFormat:@"/issues.%@", kJson];
-    [self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
-            
-            success(operation, mappingResult.array);
-        }
-    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation, error);
-    }];
+                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
+	NSString *path = [NSString stringWithFormat:@"/issues.%@", kJson];
+	[self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+	    if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
+	        success(operation, mappingResult.array);
+		}
+	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+	    failure(operation, error);
+	}];
 }
 
 @end
