@@ -170,7 +170,7 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
             
             [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-			[[RKLIBRMAPIManager sharedManager] getAllProjectsWithSuccess:^(RKObjectRequestOperation *operation, NSArray *projects) {
+            [[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess:^(RKObjectRequestOperation *operation, NSArray *projects) {
                 
                 for (RKLIBRMProject * project in projects) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
