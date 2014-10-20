@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 #import "RKLIBRM.h"
-
+#import "RKLIBRMIssues.h"
 
 /*!
  *  Configure a API Object for Redmine requests (see http://www.redmine.org/).
@@ -33,6 +33,6 @@
 - (void)postProjectWithName:(NSString *)name withIdentifier:(NSString *)identifier withDescription:(NSString *)descriptionString success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 #pragma mark issues
-- (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *issues))success
+- (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMIssues *issues))success
                      failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 @end

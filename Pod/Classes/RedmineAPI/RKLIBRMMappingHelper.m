@@ -22,10 +22,18 @@
 	                                               @"is_public" : @"isPublic", }];
 	return mapping;
 }
-
++ (RKObjectMapping *)projectsMapping {
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMProjects class]];
+    
+    [mapping addAttributeMappingsFromArray:@[@"limit", @"offset"]];
+    [mapping addAttributeMappingsFromDictionary:@{ @"total_count" : @"totalCount",
+                                                   }];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"projects" toKeyPath:@"projects" withMapping:[[self class] projectMapping]]];
+    return mapping;
+}
 + (RKObjectMapping *)issuesMapping {
     
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMProject class]];
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMIssues class]];
     [mapping addAttributeMappingsFromArray:@[@"offset", @"limit"]];
     [mapping addAttributeMappingsFromDictionary:@{ @"total_count" : @"totalCount"}];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"issues" toKeyPath:@"issues" withMapping:[[self class] issueMapping]]];

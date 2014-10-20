@@ -6,6 +6,7 @@
 //
 //
 #import "RKLIBRMProject.h"
+#import "RKLIBRMProjects.h"
 #import "RKLIBRMAPIManager.h"
 #import "RKLIBRMMappingHelper.h"
 #import "RKLIBRMIssues.h"

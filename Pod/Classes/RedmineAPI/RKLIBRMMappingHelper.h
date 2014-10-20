@@ -13,6 +13,7 @@
 @interface RKLIBRMMappingHelper : NSObject
 
 + (RKObjectMapping *)projectMapping;
++ (RKObjectMapping *)projectsMapping;
 + (RKObjectMapping *)issuesMapping;
 + (RKObjectMapping *)issueMapping;
 @end
