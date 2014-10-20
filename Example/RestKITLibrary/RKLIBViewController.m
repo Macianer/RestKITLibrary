@@ -170,9 +170,9 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
             
             [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-            [[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess:^(RKObjectRequestOperation *operation, NSArray *projects) {
+            [[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess:^(RKObjectRequestOperation *operation, RKLIBRMProjects *projects) {
                 
-                for (RKLIBRMProject * project in projects) {
+                for (RKLIBRMProject * project in projects.projects) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
                     [array addObject:project.identifier];
                    
@@ -198,9 +198,9 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
         else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
             
             [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-            [[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess:^(RKObjectRequestOperation *operation, NSArray *issues) {
+            [[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess:^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
                 
-                for (RKLIBRMIssue * issue in issues) {
+                for (RKLIBRMIssue * issue in issues.issues) {
                     NSMutableArray *array = [[NSMutableArray alloc] init];
                     [array addObject:[NSString stringWithFormat:@"%@",issue.issueId]];
                     [array addObject:issue.descriptionString];

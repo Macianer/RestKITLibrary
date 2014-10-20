@@ -48,9 +48,9 @@
 	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
 
 
-	RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:nil keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+	RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
-	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:nil keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
 	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
 
@@ -83,12 +83,12 @@
 	}];
 }
 
-- (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *projects))success
+- (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation,  RKLIBRMProjects  *projects))success
                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
     NSString *path = [NSString stringWithFormat:@"/projects.%@", kJson];
     [self.objectManager getObjectsAtPath:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        if ([mappingResult.array isKindOfClass:[NSMutableArray class]]) {
-            success(operation, mappingResult.array);
+        if ([mappingResult.firstObject isKindOfClass:[RKLIBRMProjects class]]) {
+            success(operation, mappingResult.firstObject);
         }
     } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
         failure(operation, error);

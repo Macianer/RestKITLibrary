@@ -22,7 +22,7 @@
 
 - (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password ;
 
-- (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, NSArray *projects))success
+- (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProjects *projects))success
                        failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
 - (void)getProjectWithId:(NSNumber *)projectId
