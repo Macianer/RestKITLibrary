@@ -11,6 +11,11 @@
 #import "RKLIBRMMappingHelper.h"
 #import "RKLIBRMIssues.h"
 #import "RKLIBRMIssue.h"
+#import "RKLIBRMTracker.h"
+#import "RKLIBRMPriority.h"
+#import "RKLIBRMStatus.h"
+#import "RKLIBRMAuthor.h"
+#import "RKLIBRMCategory.h"
 
 #ifndef Pods_RKLIBRM_h
 #define Pods_RKLIBRM_h

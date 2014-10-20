@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-@class RKLIBRMProject, RKLIBRMTracker, RKLIBRMStatus, RKLIBRMAuthor, RKLIBRMCategory;
+@class RKLIBRMProject, RKLIBRMTracker, RKLIBRMStatus, RKLIBRMAuthor, RKLIBRMCategory,RKLIBRMPriority;
 
 @interface RKLIBRMIssue : NSObject
 @property (nonatomic, strong) NSNumber *issueId;
+@property (nonatomic, strong) NSNumber *parentId;
 @property (nonatomic, strong) RKLIBRMProject *project;
 @property (nonatomic, strong) RKLIBRMTracker *tracker;
 @property (nonatomic, strong) RKLIBRMStatus *status;
 @property (nonatomic, strong) RKLIBRMAuthor *author;
 @property (nonatomic, strong) RKLIBRMAuthor *assignedTo;
 @property (nonatomic, strong) RKLIBRMCategory *category;
+@property (nonatomic, strong) RKLIBRMPriority *priority;
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) NSString *descriptionString;
 @property (nonatomic, strong) NSNumber *doneRatio;

@@ -49,7 +49,56 @@
                                                    @"start_date" : @"startDate",@"created_on" : @"createdOn",
                                                     @"update_on" : @"updateOn",
                                                     @"done_ratio" : @"doneRatio",}];
-//    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"project" toKeyPath:@"project" withMapping:[[self class] projectMapping]]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"project" toKeyPath:@"project" withMapping:[[self class] projectMapping]]];
+    
+     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tracker" toKeyPath:@"tracker" withMapping:[[self class] trackerMapping]]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"status" toKeyPath:@"status" withMapping:[[self class] statusMapping]]];
+     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"author" toKeyPath:@"author" withMapping:[[self class] authorMapping]]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"assigned_to" toKeyPath:@"assignedTo" withMapping:[[self class] authorMapping]]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"category" toKeyPath:@"category" withMapping:[[self class] categoryMapping]]];
+    [mapping addAttributeMappingsFromDictionary:@{ @"parent.id" : @"parentId",
+                                                 
+                                                   }];
+    return mapping;
+}
++ (RKObjectMapping *)categoryMapping {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMCategory class]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{ @"id" : @"categoryId",
+                                                   @"name" : @"name",
+                                                   }];
+    
+    return mapping;
+}
++ (RKObjectMapping *)authorMapping {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMAuthor class]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{ @"id" : @"authorId",
+                                                   @"name" : @"name",
+                                                   }];
+    
+    return mapping;
+}
++ (RKObjectMapping *)statusMapping {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMStatus class]];
+    
+    [mapping addAttributeMappingsFromDictionary:@{ @"id" : @"statusId",
+                                                   @"name" : @"name",
+                                                   }];
+    
+    return mapping;
+}
++ (RKObjectMapping *)trackerMapping {
+    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMTracker class]];
+
+    [mapping addAttributeMappingsFromDictionary:@{ @"id" : @"trackerId",
+                                                   @"name" : @"name",
+                                                   }];
+   
     return mapping;
 }
 @end
