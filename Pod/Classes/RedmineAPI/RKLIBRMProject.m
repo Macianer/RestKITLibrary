@@ -10,24 +10,20 @@
 
 @implementation RKLIBRMProject
 
--(instancetype) projectWithName:(NSString *) name
-                 withIdentifier:(NSString *) identifier
-                withDescription:(NSString *) description
-{
-    
-    //required 
-    NSParameterAssert(name);
-    NSParameterAssert(identifier);
-    
-    RKLIBRMProject *project = [RKLIBRMProject new];
-    if(project)
-    {
-        project.name = name;
-        project.identifier = identifier;
-        project.descriptionString = description;
-        
-    }
-    return project;
+- (instancetype)projectWithName:(NSString *)name
+                 withIdentifier:(NSString *)identifier
+                withDescription:(NSString *)description {
+	//required
+	NSParameterAssert(name);
+	NSParameterAssert(identifier);
+
+	RKLIBRMProject *project = [RKLIBRMProject new];
+	if (project) {
+		project.name = name;
+		project.identifier = identifier;
+		project.descriptionString = description;
+	}
+	return project;
 }
 
 @end

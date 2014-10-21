@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSDate *updateOn;
 @property (nonatomic, strong) NSNumber *isPublic;
 
--(instancetype) projectWithName:(NSString *) name
-                 withIdentifier:(NSString *) identifier
-                withDescription:(NSString *) description;
+- (instancetype)projectWithName:(NSString *)name
+                 withIdentifier:(NSString *)identifier
+                withDescription:(NSString *)description;
 @end

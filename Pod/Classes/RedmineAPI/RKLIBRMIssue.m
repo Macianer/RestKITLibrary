@@ -10,13 +10,11 @@
 
 @implementation RKLIBRMIssue
 
--(instancetype) issueWithProjectId: (NSNumber *) projectId
-{
-    RKLIBRMIssue *issue = [RKLIBRMIssue new];
-    if(issue)
-    {
-    }
-    return issue;
+- (instancetype)issueWithProjectId:(NSNumber *)projectId {
+	RKLIBRMIssue *issue = [RKLIBRMIssue new];
+	if (issue) {
+	}
+	return issue;
 }
 
 @end

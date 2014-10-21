@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class RKLIBRMProject, RKLIBRMTracker, RKLIBRMStatus, RKLIBRMAuthor, RKLIBRMCategory,RKLIBRMPriority;
+@class RKLIBRMProject, RKLIBRMTracker, RKLIBRMStatus, RKLIBRMAuthor, RKLIBRMCategory, RKLIBRMPriority;
 
 @interface RKLIBRMIssue : NSObject
 @property (nonatomic, strong) NSNumber *issueId;

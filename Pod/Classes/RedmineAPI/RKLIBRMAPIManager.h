@@ -20,14 +20,14 @@
 + (instancetype)sharedManager;
 @property (nonatomic, strong) RKObjectManager *objectManager;
 
-- (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password ;
+- (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password;
 
 - (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProjects *projects))success
                        failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
 - (void)getProjectWithId:(NSNumber *)projectId
-              withInclude:(NSString *)includes
-                  Success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
+             withInclude:(NSString *)includes
+                 Success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
                  failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
 - (void)postProjectWithName:(NSString *)name withIdentifier:(NSString *)identifier withDescription:(NSString *)descriptionString success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
