@@ -11,6 +11,7 @@
 @interface RKLIBRMProject : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *projectId;
+@property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSString *descriptionString;
 @property (nonatomic, strong) NSString *homepage;

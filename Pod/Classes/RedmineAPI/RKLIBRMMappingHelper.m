@@ -12,16 +12,19 @@
 @implementation RKLIBRMMappingHelper
 
 + (RKObjectMapping *)projectMapping {
+    
 	RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMProject class]];
 
-	[mapping addAttributeMappingsFromArray:@[@"name", @"identifier", @"homepage"]];
+	[mapping addAttributeMappingsFromArray:@[@"name", @"identifier", @"homepage", @"status"]];
 	[mapping addAttributeMappingsFromDictionary:@{ @"id" : @"projectId",
 	                                               @"description" : @"descriptionString",
 	                                               @"created_on" : @"createdOn",
 	                                               @"update_on" : @"updateOn",
 	                                               @"is_public" : @"isPublic", }];
 	return mapping;
+    
 }
+
 + (RKObjectMapping *)projectsMapping {
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[RKLIBRMProjects class]];
     
