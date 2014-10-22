@@ -15,6 +15,7 @@
 @implementation RKLIBDeviceHelper
 
 + (instancetype)sharedHelperInstance {
+    
 	static RKLIBDeviceHelper *sharedHelperInstance = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
