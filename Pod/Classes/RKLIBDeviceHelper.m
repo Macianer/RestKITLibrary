@@ -51,21 +51,29 @@
 	}
 	return [mString substringWithRange:NSMakeRange(mString.length - sep.length, sep.length)];
 }
+
 +(UIImage *)snapshotFromView: (UIView *) view
 {
+    // set context
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size,view.opaque, 0.0);
     
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, view.window.screen.scale);
+    //  iOS7 and above
+    if([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]){
+        // faster
+        [view drawViewHierarchyInRect:view.frame afterScreenUpdates:NO];
+    }
+    else
+    {   // iOS 6 and slow
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
     
-    
-    [view drawViewHierarchyInRect:view.frame afterScreenUpdates:NO];
-    
-    // Get the snapshot
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
     return image;
 }
+
 - (NSString *)platform {
 	int mib[2];
 	size_t len;
