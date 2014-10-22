@@ -15,4 +15,5 @@
 + (instancetype)sharedHelperInstance;
 + (NSString *)currentlanguageCode;
 + (NSString *)separatedStringFromArray:(NSArray *)strings WithSeparationString:(NSString *)sep;
++(UIImage *)snapshotFromView: (UIView *) view;
 @end

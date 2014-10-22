@@ -51,7 +51,21 @@
 	}
 	return [mString substringWithRange:NSMakeRange(mString.length - sep.length, sep.length)];
 }
-
++(UIImage *)snapshotFromView: (UIView *) view
+{
+    
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, view.window.screen.scale);
+    
+    
+    [view drawViewHierarchyInRect:view.frame afterScreenUpdates:NO];
+    
+    // Get the snapshot
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 - (NSString *)platform {
 	int mib[2];
 	size_t len;
