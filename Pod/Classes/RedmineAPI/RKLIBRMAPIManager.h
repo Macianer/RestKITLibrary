@@ -35,4 +35,7 @@
 #pragma mark issues
 - (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMIssues *issues))success
                      failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+
+- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName: (NSString *) fileName;
+
 @end

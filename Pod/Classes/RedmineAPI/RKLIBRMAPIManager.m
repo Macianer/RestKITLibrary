@@ -178,4 +178,44 @@
 	}];
 }
 
+//http://www.redmine.org/projects/redmine/wiki/Rest_api#Attaching-files
+
+- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName: (NSString *) fileName {
+
+    NSData *imgData = UIImagePNGRepresentation(image);
+
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_url]];
+    [httpClient setAuthorizationHeaderWithUsername:_user password:_password];
+    
+	NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/uploads.json" parameters:nil constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
+	    [formData appendPartWithFileData:imgData name:fileName fileName:fileName mimeType:@"image/png"];
+	}];
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
+	    NSString *result = [operation responseString];
+	    NSLog(@"response: [%@]", result);
+	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+	    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	    if ([operation.response statusCode] == 403) {
+	        NSLog(@"Upload Failed");
+	        return;
+		}
+	    NSLog(@"error: %@", [operation error]);
+	}];
+	[operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+        //float width = totalBytesWritten / totalBytesExpectedToWrite;
+    }];
+	[operation start];
+
+//    [operation waitUntilFinished];
+    
+    NSString *result = [operation responseString];
+    NSLog(@"response: [%@]", result);
+    
+    return result;
+}
+
 @end
