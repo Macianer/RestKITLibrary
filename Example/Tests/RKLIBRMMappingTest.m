@@ -100,7 +100,7 @@
                                        setTimeZone:[NSTimeZone timeZoneWithName:
                                                                    @"UTC"]];
                                    RKLIBRMProject *project = projects[0];
-                                   if (!projects)
+                                   if (!project)
                                      return false;
                                    if ([project.projectId compare:@57538] !=
                                        NSOrderedSame)
@@ -127,7 +127,7 @@
                                      return false;
 
                                    project = projects[1];
-                                   if (!projects)
+                                   if (!project)
                                      return false;
                                    if ([project.projectId compare:@57793] !=
                                        NSOrderedSame)
@@ -154,7 +154,7 @@
                                        NSOrderedSame)
                                      return false;
                                    project = projects[24];
-                                   if (!projects)
+                                   if (!project)
                                      return false;
                                    if ([project.projectId compare:@57734] !=
                                        NSOrderedSame)
@@ -257,7 +257,148 @@
 
   [mappingTest addExpectation:[RKPropertyMappingTestExpectation
                                   expectationWithSourceKeyPath:@"issues"
-                                            destinationKeyPath:@"issues"]];
+                                            destinationKeyPath:@"issues" evaluationBlock:^BOOL(RKPropertyMappingTestExpectation *expectation, RKPropertyMapping *mapping, id mappedValue, NSError *__autoreleasing *error) {
+                                                if (![mappedValue
+                                                      isKindOfClass:[NSArray class]])
+                                                    return false;
+                                                NSArray *issues = mappedValue;
+                                                if (issues.count != 25)
+                                                    return false;
+                                                NSDateFormatter *dateFormat =
+                                                [[NSDateFormatter alloc] init];
+                                                [dateFormat setDateFormat:
+                                                 @"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+                                                NSDateFormatter *dateFormat2 =
+                                                [[NSDateFormatter alloc] init];
+                                                [dateFormat setDateFormat:
+                                                 @"yyyy-MM-dd"];
+                                                [dateFormat
+                                                 setTimeZone:[NSTimeZone timeZoneWithName:
+                                                              @"UTC"]];
+                                                
+                                                /*!
+                                                 *  test first issue
+                                                 */
+                                                RKLIBRMIssue *issue = issues[0];
+                                                
+                                                if (!issue)
+                                                    return false;
+                                                if ([issue.issueId compare:@65628] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.project.projectId compare:@56787] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.project.name compare:@"Hotel Neu"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.tracker.trackerId compare:@1] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.tracker.name compare:@"Bug"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.status.statusId compare:@1] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.status.name compare:@"New"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.priority.priorityId compare:@4] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.priority.name compare:@"Normal"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                
+                                                if ([issue.author.authorId compare:@76718] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.author.name compare:@"Claudia Biederer"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                NSDate *date = [dateFormat
+                                                                dateFromString:@"2014-10-07T16:45:08Z"];
+                                                if ([issue.subject compare:@"Probleme kein telefon"] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.descriptionString compare:@"Probleme kein telefon"] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.startDate compare:[dateFormat2 dateFromString:@"2014-10-07"]] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.doneRatio compare:@0] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.estimatedHours compare:@1.0] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.createdOn compare:date] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.updateOn compare:date] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                
+                                                
+                                                /*!
+                                                 *  test last issue
+                                                 */
+                                               issue = issues[24];
+                                                
+                                                if (!issue)
+                                                    return false;
+                                                if ([issue.issueId compare:@65591] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.project.projectId compare:@56767] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.project.name compare:@"test fred task 1 sub 1"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.tracker.trackerId compare:@1] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.tracker.name compare:@"Bug"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.status.statusId compare:@1] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.status.name compare:@"New"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.priority.priorityId compare:@4] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.priority.name compare:@"Normal"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                
+                                                if ([issue.author.authorId compare:@76687] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.author.name compare:@"Fred Stoopendaal"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                
+                                                if ([issue.assignedTo.authorId compare:@76687] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.assignedTo.name compare:@"Fred Stoopendaal"] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                date = [dateFormat
+                                                                dateFromString:@"2014-10-07T13:45:07Z"];
+                                                if ([issue.subject compare:@"issuetje"] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.descriptionString compare:@"een issue in sub 1"] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.startDate compare:[dateFormat2 dateFromString:@"2014-10-07"]] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.doneRatio compare:@0] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.estimatedHours compare:@1.0] != NSOrderedSame)
+                                                    return false;
+                                                if ([issue.createdOn compare:date] !=
+                                                    NSOrderedSame)
+                                                    return false;
+                                                if ([issue.updateOn compare:date] !=
+                                                    NSOrderedSame)
+                                                    return false;
+
+                                                
+                                                return true;
+
+                                            }]];
 
   XCTAssertTrue([mappingTest evaluate], @"The issues has not been set up!");
 
