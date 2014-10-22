@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) NSString *descriptionString;
 @property (nonatomic, strong) NSNumber *doneRatio;
+@property (nonatomic, strong) NSNumber *estimatedHours;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *createdOn;
 @property (nonatomic, strong) NSDate *updateOn;
