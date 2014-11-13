@@ -17,9 +17,18 @@
  *  @return A RKObjectManager for Redmine API.
  */
 @interface RKLIBRMAPIManager : NSObject
+
 + (instancetype)sharedManager;
+
 @property (nonatomic, strong) RKObjectManager *objectManager;
 
+/*!
+ *  @brief Configure Redmine API
+ *
+ *  @param url      Redmine Server URL as NSString.
+ *  @param username Specific redmine user name.
+ *  @param password Related user password to user name.
+ */
 - (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password;
 
 - (void)getProjectsWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProjects *projects))success
@@ -36,6 +45,6 @@
 - (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMIssues *issues))success
                      failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
-- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName: (NSString *) fileName;
+- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName:(NSString *)fileName;
 
 @end

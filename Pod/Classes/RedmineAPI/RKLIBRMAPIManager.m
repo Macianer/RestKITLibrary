@@ -16,6 +16,7 @@
 	NSString *_user;
 	NSString *_url;
 }
+
 + (instancetype)sharedManager {
 	static RKLIBRMAPIManager *sharedMapper = nil;
 	static dispatch_once_t onceToken;
@@ -180,15 +181,14 @@
 
 //http://www.redmine.org/projects/redmine/wiki/Rest_api#Attaching-files
 
-- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName: (NSString *) fileName {
-
-    NSData *imgData = UIImagePNGRepresentation(image);
+- (NSString *)uploadTokenFromImage:(UIImage *)image withFileName:(NSString *)fileName {
+	NSData *imgData = UIImagePNGRepresentation(image);
 
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_url]];
-    [httpClient setAuthorizationHeaderWithUsername:_user password:_password];
-    
+	[httpClient setAuthorizationHeaderWithUsername:_user password:_password];
+
 	NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/uploads.json" parameters:nil constructingBodyWithBlock: ^(id < AFMultipartFormData > formData) {
 	    [formData appendPartWithFileData:imgData name:fileName fileName:fileName mimeType:@"image/png"];
 	}];
@@ -204,18 +204,18 @@
 		}
 	    NSLog(@"error: %@", [operation error]);
 	}];
-	[operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-        //float width = totalBytesWritten / totalBytesExpectedToWrite;
-    }];
+	[operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+	    NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+	    //float width = totalBytesWritten / totalBytesExpectedToWrite;
+	}];
 	[operation start];
 
 //    [operation waitUntilFinished];
-    
-    NSString *result = [operation responseString];
-    NSLog(@"response: [%@]", result);
-    
-    return result;
+
+	NSString *result = [operation responseString];
+	NSLog(@"response: [%@]", result);
+
+	return result;
 }
 
 @end
