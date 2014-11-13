@@ -84,7 +84,6 @@
 		CD9ADD0B19C632670028FC91 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD9ADD0E19C633070028FC91 /* RKLIBGPMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGPMappingTests.m; sourceTree = "<group>"; };
 		CD9ADD1319C63A560028FC91 /* RKLIBGGCMappingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGGCMappingTest.m; sourceTree = "<group>"; };
-		CD9BF39F19C6188B00F3C5C6 /* RKLIBKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RKLIBKeys.h; path = ../../RKLIBKeys.h; sourceTree = "<group>"; };
 		CD9BF3A519C61C7200F3C5C6 /* ggc_file1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ggc_file1.json; sourceTree = "<group>"; };
 		CD9BF3A619C61C7200F3C5C6 /* gp_file1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gp_file1.json; sourceTree = "<group>"; };
 		CD9DC77E19E468FE00FABA0E /* rm_issues_file_1_20141007.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rm_issues_file_1_20141007.json; sourceTree = "<group>"; };
@@ -162,7 +161,6 @@
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
 				6003F5A5195388D20070C39A /* RKLIBViewController.h */,
 				6003F5A6195388D20070C39A /* RKLIBViewController.m */,
-				CD9BF39F19C6188B00F3C5C6 /* RKLIBKeys.h */,
 				CD12718E19A53775001D7FDE /* TableViewController */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,

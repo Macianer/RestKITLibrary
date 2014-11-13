@@ -18,11 +18,8 @@
 #import <RestKITLibrary/RKLIBDeviceHelper.h>
 #import "RKLIBTableViewCellMain.h"
 
-//
-// Please build your personal RKLIBKeys.h  files
-// static NSString * const kGPAPIKey = @"api key";
-//
-#import "RKLIBKeys.h"
+
+
 
 @interface RKLIBViewController ()
 
@@ -33,6 +30,7 @@
 
 
 - (void)viewDidLoad {
+    
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
@@ -45,7 +43,7 @@
 	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
 
 	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
-NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
+	NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
 	// make a google group
 	NSMutableArray *googleArray = [[NSMutableArray alloc] init];
 	[googleArray addObject:dateSet1];
@@ -53,9 +51,9 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 
 	// add to data structure
 	[self.dataStructure addObject:googleArray];
-    NSMutableArray *redmineArray = [[NSMutableArray alloc] init];
-    [redmineArray addObject:dateSet3];
-    [redmineArray addObject:dateSet4];
+	NSMutableArray *redmineArray = [[NSMutableArray alloc] init];
+	[redmineArray addObject:dateSet3];
+	[redmineArray addObject:dateSet4];
 	// add to data structure
 	[self.dataStructure addObject:redmineArray];
 
@@ -139,9 +137,10 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 
 			[self.navigationController pushViewController:tvc animated:YES];
 		}
-		else if ([kind compare:kGPTitleKey] == NSOrderedSame) {
+		else if ([kind compare:kGPTitleKey] == NSOrderedSame ) {
 			// setup dictionary
 
+#ifdef HAS_KEYFILE
 			[[RKLIBGPAPIManager sharedManager] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language:[RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success: ^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
 			    for (RKLIBGPPrediction * predictions in response.predictions) {
 			        NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -166,64 +165,61 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 			}];
 
 			[self.navigationController pushViewController:tvc animated:YES];
+#endif
 		}
 		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
-            
-            [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-            [[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess:^(RKObjectRequestOperation *operation, RKLIBRMProjects *projects) {
-                
-                for (RKLIBRMProject * project in projects.projects) {
-                    NSMutableArray *array = [[NSMutableArray alloc] init];
-                    [array addObject:project.identifier];
-                   
-                    [array addObject:project.projectId];
-                    
-                    
-                    
-                    [tvc.dataStructure addObject:array];
-                }
-                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-                [tvc.activityIndicatorView stopAnimating];
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [tvc.activityIndicatorView stopAnimating];
-            }];
-            UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
+			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+			[[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMProjects *projects) {
+			    for (RKLIBRMProject * project in projects.projects) {
+			        NSMutableArray *array = [[NSMutableArray alloc] init];
+			        [array addObject:project.identifier];
 
-            
-           
-            [tvc setToolbarItems:@[createProject]];
+			        [array addObject:project.projectId];
+
+
+
+			        [tvc.dataStructure addObject:array];
+				}
+			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+			    [tvc.activityIndicatorView stopAnimating];
+			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+			    [tvc.activityIndicatorView stopAnimating];
+			}];
+			UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
+
+
+
+			[tvc setToolbarItems:@[createProject]];
 			[self.navigationController pushViewController:tvc animated:YES];
-             [self.navigationController setToolbarHidden:NO];
+			[self.navigationController setToolbarHidden:NO];
 		}
-        else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
-            
-            [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-            [[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess:^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
-                
-                for (RKLIBRMIssue * issue in issues.issues) {
-                    NSMutableArray *array = [[NSMutableArray alloc] init];
-                    [array addObject:[NSString stringWithFormat:@"%@",issue.issueId]];
-                    [array addObject:issue.descriptionString];
-                    [array addObject:issue.subject];
-                    
-                    
-                    [tvc.dataStructure addObject:array];
-                }
-                [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-                [tvc.activityIndicatorView stopAnimating];
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [tvc.activityIndicatorView stopAnimating];
-            }];
-            UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
-            
-            
-            
-            [tvc setToolbarItems:@[createProject]];
-            [self.navigationController pushViewController:tvc animated:YES];
-            [self.navigationController setToolbarHidden:NO];
-        }
-        
-        
+		else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
+			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+			[[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
+			    for (RKLIBRMIssue * issue in issues.issues) {
+			        NSMutableArray *array = [[NSMutableArray alloc] init];
+			        [array addObject:[NSString stringWithFormat:@"%@", issue.issueId]];
+			        [array addObject:issue.descriptionString];
+			        [array addObject:issue.subject];
+
+
+			        [tvc.dataStructure addObject:array];
+				}
+			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+			    [tvc.activityIndicatorView stopAnimating];
+			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+			    [tvc.activityIndicatorView stopAnimating];
+			}];
+			UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
+
+
+
+			[tvc setToolbarItems:@[createProject]];
+			[self.navigationController pushViewController:tvc animated:YES];
+			[self.navigationController setToolbarHidden:NO];
+		}
+
+
 		else {
 			[tvc.activityIndicatorView stopAnimating];
 		}
@@ -233,20 +229,20 @@ NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoA
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if (section == 0) {
 		return @"Google API";
-    }else if (section == 1)
-    {
-        return @"Redmine API";
-    }
+	}
+	else if (section == 1) {
+		return @"Redmine API";
+	}
 	return @"";
 }
 
 #pragma mark action
--(void) createProject
-{
-    [[RKLIBRMAPIManager sharedManager] postProjectWithName:@"test" withIdentifier:@"test" withDescription:@"test" success:^(RKObjectRequestOperation *operation, RKLIBRMProject *project) {
-        //
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        //
-    }];
+- (void)createProject {
+	[[RKLIBRMAPIManager sharedManager] postProjectWithName:@"test" withIdentifier:@"test" withDescription:@"test" success: ^(RKObjectRequestOperation *operation, RKLIBRMProject *project) {
+	    //
+	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+	    //
+	}];
 }
+
 @end
