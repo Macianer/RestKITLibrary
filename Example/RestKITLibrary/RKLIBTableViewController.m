@@ -59,6 +59,7 @@
 
 	if ([object isKindOfClass:[NSString class]])
 		return object;
+    
 	return @"";
 }
 

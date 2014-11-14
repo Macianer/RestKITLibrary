@@ -37,28 +37,38 @@
 	// init data structure
 	_dataStructure = [[NSMutableArray alloc] init];
 
+    // make a google group
+    NSMutableArray *googleArray = [[NSMutableArray alloc] init];
+    
 	// setup data sets
 	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl };
-
+    [googleArray addObject:dateSet1];
+    
+#ifdef HAS_KEYFILE
+    // add when keyfile is available
 	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
-
+    [googleArray addObject:dateSet2];
+#endif
+    
 	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
 	NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
-	// make a google group
-	NSMutableArray *googleArray = [[NSMutableArray alloc] init];
-	[googleArray addObject:dateSet1];
-	[googleArray addObject:dateSet2];
+	
+
+	
 
 	// add to data structure
 	[self.dataStructure addObject:googleArray];
 	NSMutableArray *redmineArray = [[NSMutableArray alloc] init];
 	[redmineArray addObject:dateSet3];
 	[redmineArray addObject:dateSet4];
+    
 	// add to data structure
 	[self.dataStructure addObject:redmineArray];
 
+    // register main table view cell in tableviewcontroller
 	UINib *nib = [UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle]];
 	[self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,19 +106,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // get selected dictionary
 	NSArray *array = _dataStructure[indexPath.section];
 	id object = array[indexPath.row];
 	NSDictionary *dict = object;
+    
+    // extract longTitle string
 	NSString *kind = [dict objectForKey:kLongTitleKey];
 
-
+    // load table view controller
 	RKLIBTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
-
-
-
+    
+    // start activityIndicatorView
 	[tvc.activityIndicatorView startAnimating];
 
-	if ([object isKindOfClass:[NSDictionary class]]) {
+    // differ action by long title string
+ 	if ([object isKindOfClass:[NSDictionary class]]) {
+        
+        
 		if ([kind compare:kGGCTitleKey] == NSOrderedSame) {
 			[[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success: ^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
 			    for (RKLIBGGCResult * result in response.results) {
