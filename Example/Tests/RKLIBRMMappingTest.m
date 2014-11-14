@@ -17,6 +17,7 @@
 @implementation RKLIBRMMappingTest
 
 - (void)setUp {
+    
   [super setUp];
   // Put setup code here. This method is called before the invocation of each
   // test method in the class.
@@ -400,28 +401,29 @@
 
                                             }]];
 
-  XCTAssertTrue([mappingTest evaluate], @"The issues has not been set up!");
+  XCTAssertTrue([mappingTest evaluate], @"The issues did not match!");
 
   [mappingTest addExpectation:[RKPropertyMappingTestExpectation
                                   expectationWithSourceKeyPath:@"limit"
                                             destinationKeyPath:@"limit"
                                                          value:@25]];
 
-  XCTAssertTrue([mappingTest evaluate], @"The limit has not been set up!");
+  XCTAssertTrue([mappingTest evaluate], @"The limit did not match!");
 
   [mappingTest addExpectation:[RKPropertyMappingTestExpectation
                                   expectationWithSourceKeyPath:@"offset"
                                             destinationKeyPath:@"offset"
                                                          value:@0]];
 
-  XCTAssertTrue([mappingTest evaluate], @"The offset has not been set up!");
+  XCTAssertTrue([mappingTest evaluate], @"The offset did not match!");
 
   [mappingTest addExpectation:[RKPropertyMappingTestExpectation
                                   expectationWithSourceKeyPath:@"total_count"
                                             destinationKeyPath:@"totalCount"
                                                          value:@519]];
 
-  XCTAssertTrue([mappingTest evaluate], @"The totalCount has not been set up!");
+  XCTAssertTrue([mappingTest evaluate], @"The totalCount did not match!");
+    
 }
 
 - (void)testPerformanceExample {
