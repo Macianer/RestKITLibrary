@@ -77,6 +77,9 @@
     // define projects response
 	RKResponseDescriptor *projectsResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
+    // define projects response
+    RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping] method:RKRequestMethodGET pathPattern:@"/projects/:id.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+    
     // define issues response
 	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
     
@@ -86,12 +89,14 @@
     // register projects response
 	[objectManager addResponseDescriptor:projectsResponse];
     
+    // register single project response
+    [objectManager addResponseDescriptor:projectResponse];
+    
     // register issues response
 	[objectManager addResponseDescriptor:issuesResponse];
     
     // register project request
 	[objectManager addRequestDescriptor:projectRequest];
-    
     
 	_objectManager = objectManager;
 }
