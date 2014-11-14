@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # RestKITLibrary
 
 [![CI Status](http://img.shields.io/travis/ronnymeissner/RestKITLibrary.svg?style=flat)](https://travis-ci.org/ronnymeissner/RestKITLibrary)
@@ -30,4 +29,4 @@ RestKITLibrary is available under the MIT license. See the LICENSE file for more
 =======
 RestKITLibrary
 ==============
->>>>>>> 739a30199a05caa3ca0b88ae6903764277979f3d
+
