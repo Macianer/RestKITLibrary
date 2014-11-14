@@ -43,22 +43,35 @@
  *  Configure a RKObjectManager for Redmine requests.
  */
 - (void)_initObjectManager {
-	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:_url]]];
+	
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:_url]]];
+    
+    // set user and password
 	[objectManager.HTTPClient setAuthorizationHeaderWithUsername:_user password:_password];
 
+    // set json minetype
 	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
 
 
     // define projects response
 	RKResponseDescriptor *projectsResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
+    // define issues response
 	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
-
+    
+    // define single project request
 	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
 
+    // register projects response
 	[objectManager addResponseDescriptor:projectsResponse];
+    
+    // register issues response
 	[objectManager addResponseDescriptor:issuesResponse];
+    
+    // register project request
 	[objectManager addRequestDescriptor:projectRequest];
+    
+    
 	_objectManager = objectManager;
 }
 
