@@ -17,6 +17,11 @@
 	NSString *_url;
 }
 
+/**
+ *  Create a Singleton instance.
+ *
+ *  @return A Singleton instance of RKLIBRMAPIManager.
+ */
 + (instancetype)sharedManager {
 	static RKLIBRMAPIManager *sharedMapper = nil;
 	static dispatch_once_t onceToken;
@@ -26,15 +31,31 @@
 	return sharedMapper;
 }
 
+/**
+ *  Configrure the RKLIBRMAPIManager instance with url and login.
+ *
+ *  @param url      Define the redmine host url as NSString.
+ *  @param username Define a specific user name as NSString.
+ *  @param password Define a specific user password as NSString.
+ */
 - (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password {
+    
+    NSParameterAssert(url);
 	_url = url;
+    
+    NSParameterAssert(username);
 	_user = username;
+    
+    NSParameterAssert(password);
 	_password = password;
 }
 
 - (RKObjectManager *)objectManager {
+    
+    // check if exists
 	if (!_objectManager) {
-		[self _initObjectManager];
+        // create new manager
+        [self _initObjectManager];
 	}
 	return _objectManager;
 }
@@ -74,6 +95,8 @@
     
 	_objectManager = objectManager;
 }
+
+#pragma mark project entity
 
 /*!
  *  Listing projects
@@ -174,7 +197,8 @@
 	}];
 }
 
-#pragma mark issues
+#pragma mark issue entity 
+
 /*!
  *  Listing projects
  *
