@@ -83,8 +83,11 @@
     // define issues response
 	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
     
-    // define single project request
+    // define a project request
 	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
+    
+    // define a issue request
+    RKRequestDescriptor *issueRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper issueMapping].inverseMapping objectClass:[RKLIBRMIssue class] rootKeyPath:nil method:RKRequestMethodPOST];
 
     // register projects response
 	[objectManager addResponseDescriptor:projectsResponse];
@@ -97,6 +100,9 @@
     
     // register project request
 	[objectManager addRequestDescriptor:projectRequest];
+    
+    // register issue request
+    [objectManager addRequestDescriptor:issueRequest];
     
 	_objectManager = objectManager;
 }
@@ -158,7 +164,7 @@
 
 /*!
  *  Create new project
- *
+ *  http://www.redmine.org/projects/redmine/wiki/Rest_Projects
  *  @param name              <#name description#>
  *  @param identifier        <#identifier description#>
  *  @param descriptionString <#descriptionString description#>
