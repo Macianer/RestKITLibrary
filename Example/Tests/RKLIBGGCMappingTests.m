@@ -10,11 +10,11 @@
 #import <XCTest/XCTest.h>
 #import <RestKit/Testing.h>
 #import <RestKITLibrary/RKLIBGGC.h>
-@interface RKLIBGGCMappingTest : XCTestCase
+@interface RKLIBGGCMappingTests : XCTestCase
 
 @end
 
-@implementation RKLIBGGCMappingTest
+@implementation RKLIBGGCMappingTests
 
 - (void)setUp {
 	[super setUp];

@@ -10,11 +10,12 @@
 #import <XCTest/XCTest.h>
 #import <RestKITLibrary/RKLIBRMMappingHelper.h>
 #import <RestKit/Testing.h>
-@interface RKLIBRMMappingTest : XCTestCase
+
+@interface RKLIBRMMappingTests : XCTestCase
 
 @end
 
-@implementation RKLIBRMMappingTest
+@implementation RKLIBRMMappingTests
 
 - (void)setUp {
     
@@ -29,7 +30,7 @@
 }
 
 - (void)tearDown {
-	// Put teardown code here. This method is called after the invocation of each
+	// Put teardown code here. This method is called after the invocation of exach
 	// test method in the class.
 	[super tearDown];
 }
