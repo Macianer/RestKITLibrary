@@ -49,13 +49,14 @@
 	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
 
 
-	RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+    // define projects response
+	RKResponseDescriptor *projectsResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
 	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
 	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
 
-	[objectManager addResponseDescriptor:projectResponse];
+	[objectManager addResponseDescriptor:projectsResponse];
 	[objectManager addResponseDescriptor:issuesResponse];
 	[objectManager addRequestDescriptor:projectRequest];
 	_objectManager = objectManager;
