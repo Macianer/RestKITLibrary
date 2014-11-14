@@ -32,21 +32,24 @@
 }
 
 /**
- *  Configrure the RKLIBRMAPIManager instance with url and login.
+ *  Configrure the RKLIBRMAPIManager instance with url and login. Throws assert if one parameter is missing.
  *
  *  @param url      Define the redmine host url as NSString.
  *  @param username Define a specific user name as NSString.
  *  @param password Define a specific user password as NSString.
  */
 - (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password {
-    
     NSParameterAssert(url);
-	_url = url;
-    
     NSParameterAssert(username);
-	_user = username;
-    
     NSParameterAssert(password);
+    NSAssert( url.length != 0, @"configureWithUrl:withUser:withPassword - url is empty");
+    NSAssert( username.length != 0, @"configureWithUrl:withUser:withPassword - username is empty");
+    NSAssert( password.length != 0, @"configureWithUrl:withUser:withPassword - password is empty");
+
+   
+
+	_url = url;
+    _user = username;
 	_password = password;
 }
 
@@ -112,7 +115,7 @@
 /*!
  *  Listing projects
  *
- *  @param success <#success description#>
+ *  @param success A block object to be executed when the object request operation finishes successfully. The block has two arguments the a `RKObjectRequestOperation` object and a `RKLIBRMProject` object.
  *  @param failure <#failure description#>
  */
 - (void)getProjectWithId:(NSNumber *)projectId
