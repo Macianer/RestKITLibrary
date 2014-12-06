@@ -17,8 +17,8 @@
 #ifndef Pods_RKLIBGGC_h
 #define Pods_RKLIBGGC_h
 
-static NSString *const kGGCAPIUrl = @"http://maps.googleapis.com/maps/api/geocode/";
+extern NSString *const kGGCAPIUrl;
 
-static NSString *const kGGCTitleKey = @"Google Geocoding API";
+extern NSString *const kGGCTitleKey;
 
 #endif

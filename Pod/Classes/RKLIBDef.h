@@ -6,9 +6,6 @@
 //
 //
 
-#ifndef Pods_RKLIBDef_h
-#define Pods_RKLIBDef_h
-
 static NSString *const kTypes = @"types";
 static NSString *const kGeocode = @"geocode";
 static NSString *const kInput = @"input";
@@ -42,8 +39,9 @@ static NSString *const kKey = @"key";
 static NSString *const kRegion = @"region";
 static NSString *const kTrue = @"true";
 static NSString *const kFalse = @"false";
-static NSString *const kLongTitleKey = @"long_title_key";
-static NSString *const kURLKey = @"url_title_key";
+
+extern NSString *const kLongTitleKey;
+extern NSString *const kURLKey;
+
 static NSString *const kActionKey = @"action_key";
 static NSString *const kObjectManager = @"object_manager_key";
-#endif

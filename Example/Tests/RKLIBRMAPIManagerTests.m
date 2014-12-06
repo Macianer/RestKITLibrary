@@ -45,6 +45,7 @@
     XCTAssertThrows([manager configureWithUrl:@"http://foobar.de" withUser:@"" withPassword:@"bar"]);
     
     XCTAssertThrows([manager configureWithUrl:@"http://foobar.de" withUser:@"foo" withPassword:@""]);
+    
 }
 
 - (void)testExample {

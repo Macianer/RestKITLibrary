@@ -1,3 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 target 'RestKITLibrary', :exclusive => true do
     pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
     pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
@@ -5,6 +7,17 @@ target 'RestKITLibrary', :exclusive => true do
     pod "RestKITLibrary/UI", :path => "../"
 end
 
+target 'ExampleSwift', :exclusive => true do
+    pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
+    pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
+    pod "RestKITLibrary/RedmineAPI", :path => "../"
+    pod "RestKITLibrary/UI", :path => "../"
+end
+target 'ExampleSwiftTests', :exclusive => true do
+    pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
+    pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
+    pod "RestKITLibrary/RedmineAPI", :path => "../"
+end
 target 'Tests', :exclusive => true do
     pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
     pod "RestKITLibrary/GooglePlacesAPI", :path => "../"

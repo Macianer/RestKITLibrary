@@ -17,13 +17,9 @@
 #import "RKLIBRMAuthor.h"
 #import "RKLIBRMCategory.h"
 
-#ifndef Pods_RKLIBRM_h
-#define Pods_RKLIBRM_h
+extern NSString *const kRMDemoAPIUrl;
 
-static NSString *const kRMDemoAPIUrl = @"http://demo.redmine.org";
+extern NSString *const kRMTitleKey;
+extern NSString *const kRMProjectsTitleKey;
+extern NSString *const kRMIssuesTitleKey;
 
-static NSString *const kRMTitleKey = @"Redmine API";
-static NSString *const kRMProjectsTitleKey = @"Redmine Projects API";
-static NSString *const kRMIssuesTitleKey = @"Redmine Issues API";
-
-#endif

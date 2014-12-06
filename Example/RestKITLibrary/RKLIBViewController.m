@@ -19,7 +19,7 @@
 #import <RestKITLibrary/RKLIBTableViewController.h>
 #import <RestKITLibrary/RKLIBTableViewCellMain.h>
 
-
+#define LONG_TITLE kLongTitleKey
 
 @interface RKLIBViewController ()
 
@@ -41,17 +41,17 @@
     NSMutableArray *googleArray = [[NSMutableArray alloc] init];
     
 	// setup data sets
-	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl };
-    [googleArray addObject:dateSet1];
+	NSDictionary *dataSet1 = @{ LONG_TITLE : kGGCTitleKey, kURLKey: kGGCAPIUrl };
+    [googleArray addObject:dataSet1];
     
 #ifdef HAS_KEYFILE
     // add when keyfile is available
-	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
+	NSDictionary *dataSet2 = @{ LONG_TITLE : kGPTitleKey, kURLKey: kGPAPIUrl };
     [googleArray addObject:dateSet2];
 #endif
     
-	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
-	NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
+	NSDictionary *dataSet3 = @{ LONG_TITLE : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
+	NSDictionary *dataSet4 = @{ LONG_TITLE : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
 	
 
 	
@@ -59,8 +59,8 @@
 	// add to data structure
 	[self.dataStructure addObject:googleArray];
 	NSMutableArray *redmineArray = [[NSMutableArray alloc] init];
-	[redmineArray addObject:dateSet3];
-	[redmineArray addObject:dateSet4];
+	[redmineArray addObject:dataSet3];
+	[redmineArray addObject:dataSet4];
     
 	// add to data structure
 	[self.dataStructure addObject:redmineArray];

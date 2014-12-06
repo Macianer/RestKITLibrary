@@ -46,8 +46,6 @@
     NSAssert( username.length != 0, @"configureWithUrl:withUser:withPassword - username is empty");
     NSAssert( password.length != 0, @"configureWithUrl:withUser:withPassword - password is empty");
 
-   
-
 	_url = url;
     _user = username;
 	_password = password;
