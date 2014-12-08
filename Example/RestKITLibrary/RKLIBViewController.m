@@ -116,7 +116,7 @@
 	NSString *kind = [dict objectForKey:kLongTitleKey];
 
     // load table view controller
-	RKLIBTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([RKLIBTableViewController class])];
+	RKLIBTableViewController *tvc = [[RKLIBTableViewController alloc] initWithNibName:NSStringFromClass([RKLIBTableViewController class]) bundle:[NSBundle mainBundle]];
     
     // start activityIndicatorView
 	[tvc.activityIndicatorView startAnimating];

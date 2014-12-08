@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ig4-81-7jI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ig4-81-7jI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -42,52 +42,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="263" y="173"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="HIg-CC-z9g">
-            <objects>
-                <viewController storyboardIdentifier="RKLIBTableViewController" id="gSV-zM-zet" customClass="RKLIBTableViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YNX-pY-sAr"/>
-                        <viewControllerLayoutGuide type="bottom" id="puJ-eo-6iG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LfV-kS-Jju">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M80-kb-A1P">
-                                <rect key="frame" x="0.0" y="-40" width="320" height="608"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="gSV-zM-zet" id="sdN-iw-jYg"/>
-                                    <outlet property="delegate" destination="gSV-zM-zet" id="ebX-vv-Qfc"/>
-                                </connections>
-                            </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Xl-C8-BsP">
-                                <rect key="frame" x="16" y="20" width="288" height="548"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="M80-kb-A1P" secondAttribute="trailing" id="DZe-tK-JC2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Xl-C8-BsP" secondAttribute="trailing" id="F7Z-gu-UIN"/>
-                            <constraint firstItem="M80-kb-A1P" firstAttribute="top" secondItem="YNX-pY-sAr" secondAttribute="bottom" constant="-60" id="Lc5-Kb-TtH"/>
-                            <constraint firstItem="M80-kb-A1P" firstAttribute="leading" secondItem="LfV-kS-Jju" secondAttribute="leading" id="OVJ-ei-4vN"/>
-                            <constraint firstItem="5Xl-C8-BsP" firstAttribute="top" secondItem="YNX-pY-sAr" secondAttribute="bottom" id="Q0a-lj-8vl"/>
-                            <constraint firstItem="puJ-eo-6iG" firstAttribute="top" secondItem="5Xl-C8-BsP" secondAttribute="bottom" id="dPn-jH-hF3"/>
-                            <constraint firstItem="5Xl-C8-BsP" firstAttribute="leading" secondItem="LfV-kS-Jju" secondAttribute="leadingMargin" id="syT-z4-yeS"/>
-                            <constraint firstItem="puJ-eo-6iG" firstAttribute="top" secondItem="M80-kb-A1P" secondAttribute="bottom" id="y2G-eC-tb1"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="SiT-nK-Hka"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="5Xl-C8-BsP" id="g8b-If-RoG"/>
-                        <outlet property="tableView" destination="M80-kb-A1P" id="Noz-Fh-xyG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RfG-gz-kMs" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="302" y="683"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gLs-50-pX1">
