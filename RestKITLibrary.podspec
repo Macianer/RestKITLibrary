@@ -35,7 +35,13 @@ Pod::Spec.new do |s|
     bs.public_header_files = 'Pod/Classes/*.h'
     bs.source_files = 'Pod/Classes/*.{h,m}'
   end
-  
+
+  s.subspec 'UI' do |uis|
+  uis.public_header_files = 'Pod/Classes/UI/*.h'
+  uis.source_files = 'Pod/Classes/UI/*.{h,m}'
+  uis.resources = 'Pod/Assets/UI/*.xib'
+  end
+
   s.subspec 'GoogleGeocodingAPI' do |ggas|
     ggas.dependency 'RestKITLibrary/Base'
     ggas.public_header_files = 'Pod/Classes/GoogleGeocodingAPI/*.h'
