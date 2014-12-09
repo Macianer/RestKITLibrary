@@ -22,9 +22,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		686083974494478D85A4DD4F /* libPods-RestKITLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EE676B0D924CC697930963 /* libPods-RestKITLibrary.a */; };
 		CD084AE319D4A781008B658F /* rm_projects1.json in Resources */ = {isa = PBXBuildFile; fileRef = CD084AE219D4A781008B658F /* rm_projects1.json */; };
-		CD0A486619C77A4E004CEA62 /* RKLIBTableViewCellMain.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */; };
-		CD0A486719C77A4E004CEA62 /* RKLIBTableViewCellMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */; };
-		CD5D060D199D59610076986D /* RKLIBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D060C199D59610076986D /* RKLIBTableViewController.m */; };
 		CD9ADD0C19C632670028FC91 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9ADD0B19C632670028FC91 /* XCTest.framework */; };
 		CD9ADD0D19C632830028FC91 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9ADD0B19C632670028FC91 /* XCTest.framework */; };
 		CD9ADD0F19C633070028FC91 /* RKLIBGPMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9ADD0E19C633070028FC91 /* RKLIBGPMappingTests.m */; };
@@ -77,11 +74,6 @@
 		9D361929026CEA646444C5C4 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C909A7DAB695431ABC954E7D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CD084AE219D4A781008B658F /* rm_projects1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rm_projects1.json; sourceTree = "<group>"; };
-		CD0A486319C77A4E004CEA62 /* RKLIBTableViewCellMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBTableViewCellMain.h; sourceTree = "<group>"; };
-		CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBTableViewCellMain.m; sourceTree = "<group>"; };
-		CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKLIBTableViewCellMain.xib; sourceTree = "<group>"; };
-		CD5D060B199D59610076986D /* RKLIBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBTableViewController.h; sourceTree = "<group>"; };
-		CD5D060C199D59610076986D /* RKLIBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBTableViewController.m; sourceTree = "<group>"; };
 		CD9ADD0B19C632670028FC91 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD9ADD0E19C633070028FC91 /* RKLIBGPMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGPMappingTests.m; sourceTree = "<group>"; };
 		CD9ADD1319C63A560028FC91 /* RKLIBGGCMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGGCMappingTests.m; sourceTree = "<group>"; };
@@ -163,7 +155,6 @@
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
 				6003F5A5195388D20070C39A /* RKLIBViewController.h */,
 				6003F5A6195388D20070C39A /* RKLIBViewController.m */,
-				CD12718E19A53775001D7FDE /* TableViewController */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -223,18 +214,6 @@
 				9D361929026CEA646444C5C4 /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		CD12718E19A53775001D7FDE /* TableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CD5D060B199D59610076986D /* RKLIBTableViewController.h */,
-				CD5D060C199D59610076986D /* RKLIBTableViewController.m */,
-				CD0A486319C77A4E004CEA62 /* RKLIBTableViewCellMain.h */,
-				CD0A486419C77A4E004CEA62 /* RKLIBTableViewCellMain.m */,
-				CD0A486519C77A4E004CEA62 /* RKLIBTableViewCellMain.xib */,
-			);
-			name = TableViewController;
 			sourceTree = "<group>";
 		};
 		CD9BF3A419C61C7200F3C5C6 /* Fixtures */ = {
@@ -336,7 +315,6 @@
 				CDCE708B19F2BA07001F8257 /* rm_issues_file_1_20141007.json in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				CD9ADD1119C6394D0028FC91 /* ggc_file1.json in Resources */,
-				CD0A486719C77A4E004CEA62 /* RKLIBTableViewCellMain.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,10 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* RKLIBAppDelegate.m in Sources */,
-				CD0A486619C77A4E004CEA62 /* RKLIBTableViewCellMain.m in Sources */,
 				6003F5A7195388D20070C39A /* RKLIBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				CD5D060D199D59610076986D /* RKLIBTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
