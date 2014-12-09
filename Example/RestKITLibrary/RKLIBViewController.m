@@ -16,9 +16,8 @@
 #import <RestKITLibrary/RKLIBGP.h>
 #import <RestKITLibrary/RKLIBRM.h>
 #import <RestKITLibrary/RKLIBDeviceHelper.h>
+#import <RestKITLibrary/RKLIBTableViewController.h>
 #import <RestKITLibrary/RKLIBTableViewCellMain.h>
-#import "RKLIBTableViewCellMain.h"
-
 
 
 

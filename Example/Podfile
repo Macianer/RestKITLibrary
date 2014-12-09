@@ -9,5 +9,4 @@ target 'Tests', :exclusive => true do
     pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
     pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
     pod "RestKITLibrary/RedmineAPI", :path => "../"
-    pod "RestKITLibrary/UI", :path => "../"
 end
