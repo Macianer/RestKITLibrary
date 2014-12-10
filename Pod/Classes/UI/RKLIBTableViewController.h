@@ -11,7 +11,9 @@
 @class RKLIBGGCResult;
 
 @interface RKLIBTableViewController : UIViewController <UITableViewDataSource,  UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @property (nonatomic, strong) NSMutableArray *dataStructure;
