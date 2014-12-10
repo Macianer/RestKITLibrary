@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RKLIBTableViewController.h"
 
 //
 // Please build your personal RKLIBKeys.h  files
