@@ -271,10 +271,8 @@
 				79DD65B862DB11F59504D57D /* Pods-Tests.debug.xcconfig */,
 				9D361929026CEA646444C5C4 /* Pods-Tests.release.xcconfig */,
 				AA06192BD53A257AE427C51D /* Pods-ExampleSwift.debug.xcconfig */,
-				0A78461FE7FD4555655695A5 /* Pods-ExampleSwift.gcov_build.xcconfig */,
 				2C1C2E3C2C6414C7B52A56A6 /* Pods-ExampleSwift.release.xcconfig */,
 				87676985ED5FAEB09AE93C18 /* Pods-ExampleSwiftTests.debug.xcconfig */,
-				99F08B2AF3C7EDA608C9FF58 /* Pods-ExampleSwiftTests.gcov_build.xcconfig */,
 				DAD7D66279CCD1EA537FC22C /* Pods-ExampleSwiftTests.release.xcconfig */,
 			);
 			name = Pods;
@@ -873,8 +871,6 @@
 			};
 			name = Release;
 		};
-<<<<<<< HEAD
-=======
 		F38ACC2A1A24DC3600C72F0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA06192BD53A257AE427C51D /* Pods-ExampleSwift.debug.xcconfig */;
@@ -897,24 +893,7 @@
 			};
 			name = Debug;
 		};
-		F38ACC2B1A24DC3600C72F0A /* GCov_Build */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A78461FE7FD4555655695A5 /* Pods-ExampleSwift.gcov_build.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = ExampleSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ExampleSwift/ExampleSwift-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = GCov_Build;
-		};
+		
 		F38ACC2C1A24DC3600C72F0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C1C2E3C2C6414C7B52A56A6 /* Pods-ExampleSwift.release.xcconfig */;
@@ -956,26 +935,7 @@
 			};
 			name = Debug;
 		};
-		F38ACC2E1A24DC3600C72F0A /* GCov_Build */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99F08B2AF3C7EDA608C9FF58 /* Pods-ExampleSwiftTests.gcov_build.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExampleSwiftTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleSwift.app/ExampleSwift";
-			};
-			name = GCov_Build;
-		};
+		
 		F38ACC2F1A24DC3600C72F0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DAD7D66279CCD1EA537FC22C /* Pods-ExampleSwiftTests.release.xcconfig */;
@@ -996,89 +956,8 @@
 			};
 			name = Release;
 		};
-		F3FCF78F1A1651DE007261D9 /* GCov_Build */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = GCov_Build;
-		};
-		F3FCF7901A1651DE007261D9 /* GCov_Build */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECC55CB4A2745F7CD4E619A1 /* Pods-RestKITLibrary.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Frameworks",
-				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RestKITLibrary/RestKITLibrary-Prefix.pch";
-				INFOPLIST_FILE = "RestKITLibrary/RestKITLibrary-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = GCov_Build;
-		};
-		F3FCF7911A1651DE007261D9 /* GCov_Build */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79DD65B862DB11F59504D57D /* Pods-Tests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RestKITLibrary.app/RestKITLibrary";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(SDKROOT)/Developer/Library/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Tests/Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = GCov_Build;
-		};
->>>>>>> init swift example
+	
+	
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1113,21 +992,19 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F38ACC2A1A24DC3600C72F0A /* Debug */,
-				F38ACC2B1A24DC3600C72F0A /* GCov_Build */,
 				F38ACC2C1A24DC3600C72F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = GCov_Build;
+			defaultConfigurationName = Debug;
 		};
 		F38ACC311A24DC3600C72F0A /* Build configuration list for PBXNativeTarget "ExampleSwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F38ACC2D1A24DC3600C72F0A /* Debug */,
-				F38ACC2E1A24DC3600C72F0A /* GCov_Build */,
 				F38ACC2F1A24DC3600C72F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = GCov_Build;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
