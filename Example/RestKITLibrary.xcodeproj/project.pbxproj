@@ -37,7 +37,7 @@
 		CDEA9D2619F2846000AC4F1A /* RKLIBRMMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */; };
 		F1EB98F622E5F165CE0E5BB3 /* libPods-ExampleSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD97630695FD7F48D3A36C34 /* libPods-ExampleSwiftTests.a */; };
 		F38ACC131A24DC3600C72F0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38ACC121A24DC3600C72F0A /* AppDelegate.swift */; };
-		F38ACC151A24DC3600C72F0A /* LibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38ACC141A24DC3600C72F0A /* LibViewController.swift */; };
+		F38ACC151A24DC3600C72F0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38ACC141A24DC3600C72F0A /* ViewController.swift */; };
 		F38ACC181A24DC3600C72F0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F38ACC161A24DC3600C72F0A /* Main.storyboard */; };
 		F38ACC1A1A24DC3600C72F0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38ACC191A24DC3600C72F0A /* Images.xcassets */; };
 		F38ACC1D1A24DC3600C72F0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38ACC1B1A24DC3600C72F0A /* LaunchScreen.xib */; };
@@ -107,7 +107,7 @@
 		F38ACC0E1A24DC3600C72F0A /* ExampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38ACC111A24DC3600C72F0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F38ACC121A24DC3600C72F0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F38ACC141A24DC3600C72F0A /* LibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibViewController.swift; sourceTree = "<group>"; };
+		F38ACC141A24DC3600C72F0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F38ACC171A24DC3600C72F0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F38ACC191A24DC3600C72F0A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F38ACC1C1A24DC3600C72F0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				F38ACC121A24DC3600C72F0A /* AppDelegate.swift */,
-				F38ACC141A24DC3600C72F0A /* LibViewController.swift */,
+				F38ACC141A24DC3600C72F0A /* ViewController.swift */,
 				F38ACC161A24DC3600C72F0A /* Main.storyboard */,
 				F38ACC191A24DC3600C72F0A /* Images.xcassets */,
 				F38ACC1B1A24DC3600C72F0A /* LaunchScreen.xib */,
@@ -647,7 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F38ACC151A24DC3600C72F0A /* LibViewController.swift in Sources */,
+				F38ACC151A24DC3600C72F0A /* ViewController.swift in Sources */,
 				F38ACC131A24DC3600C72F0A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,7 +884,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ExampleSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -893,7 +893,6 @@
 			};
 			name = Debug;
 		};
-		
 		F38ACC2C1A24DC3600C72F0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C1C2E3C2C6414C7B52A56A6 /* Pods-ExampleSwift.release.xcconfig */;
@@ -903,7 +902,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = ExampleSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -935,7 +934,6 @@
 			};
 			name = Debug;
 		};
-		
 		F38ACC2F1A24DC3600C72F0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DAD7D66279CCD1EA537FC22C /* Pods-ExampleSwiftTests.release.xcconfig */;
@@ -956,8 +954,6 @@
 			};
 			name = Release;
 		};
-	
-	
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
