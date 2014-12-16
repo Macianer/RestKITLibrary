@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LibViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var dataStructure:[NSArray] = [];
     
@@ -107,11 +107,11 @@ class LibViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let array = dataStructure[indexPath.section]
         
         // load table view controller
-        let tableViewController:RKLIBTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier(NSStringFromClass(RKLIBTableViewController.self)) as RKLIBTableViewController
+        let tableViewController:RKLIBTableViewController = RKLIBTableViewController(nibName: "RKLIBTableViewController", bundle: NSBundle.mainBundle())
         
         
         // start activityIndicatorView
-//        tableViewController.activityIndicatorView.startAnimating()
+        tableViewController.activityIndicatorView?.startAnimating()
         
         // assign dictionary values to cell labels
         if let dict = array[indexPath.row] as? NSDictionary {
@@ -123,9 +123,9 @@ class LibViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     RKLIBGGCAPIManager.sharedManager().getByStringAddress("Timesquare", components: nil, bounds: nil, key: nil, language: nil, region: nil, success: { (RKObjectRequestOperation, RKLIBGGCResponse) -> Void in
                         var results = self.fetchGGCResponse(RKLIBGGCResponse)
                         tableViewController.dataStructure = results
-//                        tableViewController.activityIndicatorView.stopAnimating()
+                        tableViewController.activityIndicatorView.stopAnimating()
                         }, failure: { (RKObjectRequestOperation, NSError) -> Void in
-//                            tableViewController.activityIndicatorView.stopAnimating()
+                            tableViewController.activityIndicatorView.stopAnimating()
                     });
                 }
                 self.navigationController?.pushViewController(tableViewController, animated:true)
@@ -146,6 +146,7 @@ class LibViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 string = result.formattedAddress
                 arrayData.addObject(string)
                 string = result.geometry.description
+                arrayData.addObject(string)
             }
             array.addObject(arrayData)
         }
