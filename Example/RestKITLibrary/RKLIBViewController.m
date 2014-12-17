@@ -19,7 +19,7 @@
 #import <RestKITLibrary/RKLIBTableViewController.h>
 #import <RestKITLibrary/RKLIBTableViewCellMain.h>
 
-
+#import "RKLIBKeys.h"
 
 @interface RKLIBViewController ()
 
@@ -44,11 +44,9 @@
 	NSDictionary *dateSet1 = @{ kLongTitleKey : kGGCTitleKey, kURLKey: kGGCAPIUrl };
     [googleArray addObject:dateSet1];
     
-#ifdef HAS_KEYFILE
     // add when keyfile is available
 	NSDictionary *dateSet2 = @{ kLongTitleKey : kGPTitleKey, kURLKey: kGPAPIUrl };
     [googleArray addObject:dateSet2];
-#endif
     
 	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
 	NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
@@ -156,7 +154,6 @@
 		else if ([kind compare:kGPTitleKey] == NSOrderedSame ) {
 			// setup dictionary
 
-#ifdef HAS_KEYFILE
 			[[RKLIBGPAPIManager sharedManager] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language:[RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success: ^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
 			    for (RKLIBGPPrediction * predictions in response.predictions) {
 			        NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -181,7 +178,6 @@
 			}];
 
 			[self.navigationController pushViewController:tvc animated:YES];
-#endif
 		}
 		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
 			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
@@ -210,7 +206,7 @@
 			[self.navigationController setToolbarHidden:NO];
 		}
 		else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
-			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:kRMAPIUser withPassword:kRMAPIPassword];
 			[[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
 			    for (RKLIBRMIssue * issue in issues.issues) {
 			        NSMutableArray *array = [[NSMutableArray alloc] init];

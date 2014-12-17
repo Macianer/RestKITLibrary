@@ -8,15 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//
-// Please build your personal RKLIBKeys.h  files
-// static NSString * const kGPAPIKey = @"api key";
-//
-#if __has_include("RKLIBKeys.h")
-#import "RKLIBKeys.h"
-#define HAS_KEYFILE
-#endif
-
 @interface RKLIBViewController : UIViewController <UITableViewDataSource,  UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataStructure;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

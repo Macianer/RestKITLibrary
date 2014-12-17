@@ -82,6 +82,7 @@
 		CD9DC77E19E468FE00FABA0E /* rm_issues_file_1_20141007.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rm_issues_file_1_20141007.json; sourceTree = "<group>"; };
 		CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBRMMappingTests.m; sourceTree = "<group>"; };
 		ECC55CB4A2745F7CD4E619A1 /* Pods-RestKITLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestKITLibrary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RestKITLibrary/Pods-RestKITLibrary.debug.xcconfig"; sourceTree = "<group>"; };
+		F36E20D41A42222A00E6C004 /* RKLIBKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBKeys.h; sourceTree = "<group>"; };
 		F3FCF78D1A165144007261D9 /* RKLIBRMAPIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBRMAPIManagerTests.m; sourceTree = "<group>"; };
 		FF99323F671E4BA398A2945F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +151,7 @@
 		6003F593195388D20070C39A /* RestKITLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				F36E20D41A42222A00E6C004 /* RKLIBKeys.h */,
 				6003F59C195388D20070C39A /* RKLIBAppDelegate.h */,
 				6003F59D195388D20070C39A /* RKLIBAppDelegate.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
