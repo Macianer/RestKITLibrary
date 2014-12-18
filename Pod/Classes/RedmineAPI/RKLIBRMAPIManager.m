@@ -39,26 +39,22 @@
  *  @param password Define a specific user password as NSString.
  */
 - (void)configureWithUrl:(NSString *)url withUser:(NSString *)username withPassword:(NSString *)password {
-    NSParameterAssert(url);
-    NSParameterAssert(username);
-    NSParameterAssert(password);
-    NSAssert( url.length != 0, @"configureWithUrl:withUser:withPassword - url is empty");
-    NSAssert( username.length != 0, @"configureWithUrl:withUser:withPassword - username is empty");
-    NSAssert( password.length != 0, @"configureWithUrl:withUser:withPassword - password is empty");
-
-   
-
+	NSParameterAssert(url);
+	NSParameterAssert(username);
+	NSParameterAssert(password);
+	NSAssert(url.length != 0, @"configureWithUrl:withUser:withPassword - url is empty");
+	NSAssert(username.length != 0, @"configureWithUrl:withUser:withPassword - username is empty");
+	NSAssert(password.length != 0, @"configureWithUrl:withUser:withPassword - password is empty");
 	_url = url;
-    _user = username;
+	_user = username;
 	_password = password;
 }
 
 - (RKObjectManager *)objectManager {
-    
-    // check if exists
+	// check if exists
 	if (!_objectManager) {
-        // create new manager
-        [self _initObjectManager];
+		// create new manager
+		[self _initObjectManager];
 	}
 	return _objectManager;
 }
@@ -67,46 +63,45 @@
  *  Configure a RKObjectManager for Redmine requests.
  */
 - (void)_initObjectManager {
-	
-    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:_url]]];
-    
-    // set user and password
+	RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:_url]]];
+
+	// set user and password
 	[objectManager.HTTPClient setAuthorizationHeaderWithUsername:_user password:_password];
 
-    // set json minetype
+	// set json minetype
 	[objectManager setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
 
 
-    // define projects response
+	// define projects response
 	RKResponseDescriptor *projectsResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectsMapping] method:RKRequestMethodGET pathPattern:@"/projects.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
-    // define projects response
-    RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping] method:RKRequestMethodGET pathPattern:@"/projects/:id.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
-    
-    // define issues response
-	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
-    
-    // define a project request
-	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
-    
-    // define a issue request
-    RKRequestDescriptor *issueRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper issueMapping].inverseMapping objectClass:[RKLIBRMIssue class] rootKeyPath:nil method:RKRequestMethodPOST];
+	// define projects response
+	RKResponseDescriptor *projectResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping] method:RKRequestMethodGET pathPattern:@"/projects/:id.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
 
-    // register projects response
+	// define issues response
+	RKResponseDescriptor *issuesResponse = [RKResponseDescriptor responseDescriptorWithMapping:[RKLIBRMMappingHelper issuesMapping] method:RKRequestMethodGET pathPattern:@"/issues.json" keyPath:nil statusCodes:[NSIndexSet indexSetWithIndex:RKStatusCodeClassSuccessful]];
+
+	// define a project request
+	RKRequestDescriptor *projectRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper projectMapping].inverseMapping objectClass:[RKLIBRMProject class] rootKeyPath:nil method:RKRequestMethodPOST];
+
+	// define a issue request
+	RKRequestDescriptor *issueRequest = [RKRequestDescriptor requestDescriptorWithMapping:[RKLIBRMMappingHelper issueMapping].inverseMapping objectClass:[RKLIBRMIssue class] rootKeyPath:nil method:RKRequestMethodPOST];
+
+	// register projects response
 	[objectManager addResponseDescriptor:projectsResponse];
-    
-    // register single project response
-    [objectManager addResponseDescriptor:projectResponse];
-    
-    // register issues response
+
+	// register single project response
+	[objectManager addResponseDescriptor:projectResponse];
+
+	// register issues response
 	[objectManager addResponseDescriptor:issuesResponse];
-    
-    // register project request
+
+	// register project request
 	[objectManager addRequestDescriptor:projectRequest];
-    
-    // register issue request
-    [objectManager addRequestDescriptor:issueRequest];
-    
+
+	// register issue request
+	[objectManager addRequestDescriptor:issueRequest];
+
 	_objectManager = objectManager;
 }
 
@@ -171,17 +166,26 @@
  *  @param name              <#name description#>
  *  @param identifier        <#identifier description#>
  *  @param descriptionString <#descriptionString description#>
- *  @param success           <#success description#>
- *  @param failure           <#failure description#>
+ *  @param success A block object to be executed when the project delete request operation finishes successfully.
+ *  @param failure A block object to be executed when the project delete request operation finishes unsuccessfully.
  */
-- (void)postProjectWithName:(NSString *)name withIdentifier:(NSString *)identifier withDescription:(NSString *)descriptionString success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
+- (void)postProjectWithName:(NSString *)name
+             withIdentifier:(NSString *)identifier
+            withDescription:(NSString *)descriptionString
+                    success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *project))success
                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects.%@", kJson];
 
 	RKLIBRMProject *project = [RKLIBRMProject new];
-	project.name = name;
-	project.identifier = identifier;
-	project.descriptionString = descriptionString;
+	if (name) {
+		project.name = name;
+	}
+	if (identifier) {
+		project.identifier = identifier;
+	}
+    if (descriptionString) {
+        project.descriptionString = descriptionString;
+    }
 
 	[self.objectManager postObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 	    success(operation, mappingResult.firstObject);
@@ -190,8 +194,15 @@
 	}];
 }
 
-- (void)putWithProject:(RKLIBRMProject *)project uccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject))
-    success
+/**
+ *  Edit a existing project.
+ *
+ *  @param project The updated project object.
+ *  @param success A block object to be executed when the project put request operation finishes successfully.
+ *  @param failure A block object to be executed when the project put request operation finishes unsuccessfully.
+ */
+- (void)putWithProject:(RKLIBRMProject *)project
+               success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject)) success
                failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", project.projectId, kJson];
 	[self.objectManager putObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -201,23 +212,32 @@
 	}];
 }
 
-- (void)deleteProjectWithID:(NSNumber *)projectId {
+/**
+ *  Delete a project by it's project id.
+ *
+ *  @param projectId A project id as number.
+ *  @param success A block object to be executed when the project delete request operation finishes successfully.
+ *  @param failure A block object to be executed when the project delete request operation finishes unsuccessfully.
+ */
+- (void)deleteProjectWithID:(NSNumber *)projectId
+                    success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)) success
+                    failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", projectId, kJson];
 
 	[self.objectManager deleteObject:nil path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-	    //
+        success(operation,mappingResult);
 	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-	    //
+        failure(operation,error);
 	}];
 }
 
-#pragma mark issue entity 
+#pragma mark issue entity
 
 /*!
- *  Listing projects
+ *  List all issues.
  *
- *  @param success <#success description#>
- *  @param failure <#failure description#>
+ *  @param success A block object to be executed when the issues request operation finishes successfully.
+ *  @param failure A block object to be executed when the issues request operation finishes unsuccessfully.
  */
 - (void)getIssuesWithSuccess:(void (^)(RKObjectRequestOperation *operation, RKLIBRMIssues *issues))success
                      failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
