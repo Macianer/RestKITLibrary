@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RKLIBTableViewController">
             <connections>
                 <outlet property="activityIndicatorView" destination="5Bz-fG-e7b" id="ZIe-pd-ZNM"/>
+                <outlet property="failedMessageView" destination="uI1-Gp-Fbh" id="7qG-7u-5Nu"/>
                 <outlet property="tableView" destination="8gi-gm-8UD" id="ESG-SE-24X"/>
                 <outlet property="view" destination="MQ9-9Q-6Oa" id="PPK-wD-pMc"/>
             </connections>
@@ -28,16 +29,38 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-fG-e7b">
                     <rect key="frame" x="8" y="20" width="584" height="580"/>
                 </activityIndicatorView>
+                <view alpha="0.49999999999999961" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI1-Gp-Fbh">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Failed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-4S-xUl">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="iLv-4S-xUl" firstAttribute="top" secondItem="uI1-Gp-Fbh" secondAttribute="top" id="0w1-mD-3Av"/>
+                        <constraint firstItem="iLv-4S-xUl" firstAttribute="leading" secondItem="uI1-Gp-Fbh" secondAttribute="leading" id="41v-ne-rAv"/>
+                        <constraint firstAttribute="bottom" secondItem="iLv-4S-xUl" secondAttribute="bottom" id="XtN-13-8PV"/>
+                        <constraint firstAttribute="trailing" secondItem="iLv-4S-xUl" secondAttribute="trailing" id="wnV-PH-6Or"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="5Bz-fG-e7b" firstAttribute="bottom" secondItem="8gi-gm-8UD" secondAttribute="bottom" id="AOd-hx-Gd0"/>
+                <constraint firstAttribute="trailing" secondItem="uI1-Gp-Fbh" secondAttribute="trailing" id="I0e-3H-zEw"/>
+                <constraint firstAttribute="bottom" secondItem="uI1-Gp-Fbh" secondAttribute="bottom" id="XIT-ig-2Vp"/>
                 <constraint firstItem="8gi-gm-8UD" firstAttribute="leading" secondItem="MQ9-9Q-6Oa" secondAttribute="leading" id="YD1-sj-mVv"/>
                 <constraint firstItem="5Bz-fG-e7b" firstAttribute="leading" secondItem="MQ9-9Q-6Oa" secondAttribute="leadingMargin" id="aiH-9v-CQj"/>
                 <constraint firstAttribute="bottom" secondItem="5Bz-fG-e7b" secondAttribute="bottom" id="iT6-5n-SUS"/>
                 <constraint firstItem="5Bz-fG-e7b" firstAttribute="centerX" secondItem="8gi-gm-8UD" secondAttribute="centerX" id="jvK-0o-SZW"/>
                 <constraint firstAttribute="trailingMargin" secondItem="5Bz-fG-e7b" secondAttribute="trailing" id="m18-tU-MFG"/>
                 <constraint firstItem="5Bz-fG-e7b" firstAttribute="top" secondItem="MQ9-9Q-6Oa" secondAttribute="top" constant="20" id="rsS-nK-zdD"/>
+                <constraint firstItem="uI1-Gp-Fbh" firstAttribute="leading" secondItem="MQ9-9Q-6Oa" secondAttribute="leading" id="tpq-Hu-f4M"/>
+                <constraint firstItem="uI1-Gp-Fbh" firstAttribute="top" secondItem="MQ9-9Q-6Oa" secondAttribute="top" id="vjP-qh-JGd"/>
                 <constraint firstItem="8gi-gm-8UD" firstAttribute="top" secondItem="MQ9-9Q-6Oa" secondAttribute="top" id="wy3-6B-SS3"/>
             </constraints>
         </view>

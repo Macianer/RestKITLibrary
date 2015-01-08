@@ -11,6 +11,7 @@
 @implementation RKLIBGGCAddressComponent
 
 - (NSString *)description {
+    
 	NSMutableString *mString = [[NSMutableString alloc] init];
 	for (NSString *string in self.types) {
 		[mString appendString:string];

@@ -16,9 +16,6 @@
 #import <RestKITLibrary/RKLIBDef.h>
 #import <RestKITLibrary/RKLIBGP.h>
 #import <RestKITLibrary/RKLIBGGC.h>
-#include <stdio.h>
-
-extern void __gcov_flush();
 
 @implementation RKLIBAppDelegate
 
@@ -33,9 +30,6 @@ extern void __gcov_flush();
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-#if defined (GCov_Build)
-    __gcov_flush();
-#endif
 
 	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

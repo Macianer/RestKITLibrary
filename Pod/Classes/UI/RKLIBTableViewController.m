@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    self.failedMessageView.hidden = YES;
 	self.dataStructure = [[NSMutableArray alloc] init];
 
     // register main table view
@@ -73,4 +73,7 @@
 	return @"";
 }
 
+-(void) setFailedMessageViewVisible:(BOOL)visible {
+    [_failedMessageView setHidden:!visible];
+}
 @end

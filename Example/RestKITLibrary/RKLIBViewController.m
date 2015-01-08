@@ -50,9 +50,6 @@
     
 	NSDictionary *dateSet3 = @{ kLongTitleKey : kRMProjectsTitleKey, kURLKey: kRMDemoAPIUrl };
 	NSDictionary *dateSet4 = @{ kLongTitleKey : kRMIssuesTitleKey, kURLKey: kRMDemoAPIUrl };
-	
-
-	
 
 	// add to data structure
 	[self.dataStructure addObject:googleArray];
@@ -108,7 +105,7 @@
     // get selected dictionary
 	NSArray *array = _dataStructure[indexPath.section];
 	id object = array[indexPath.row];
-	NSDictionary *dict = object;
+    NSDictionary *dict = object;
     
     // extract longTitle string
 	NSString *kind = [dict objectForKey:kLongTitleKey];
@@ -122,118 +119,17 @@
     // differ action by long title string
  	if ([object isKindOfClass:[NSDictionary class]]) {
         
-        
 		if ([kind compare:kGGCTitleKey] == NSOrderedSame) {
-			[[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success: ^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
-			    for (RKLIBGGCResult * result in response.results) {
-			        NSMutableArray *array = [[NSMutableArray alloc] init];
-			        [array addObject:result.formattedAddress];
-			        NSMutableString *mString = [[NSMutableString alloc] init];
-			        for (NSString * string in result.types) {
-			            [mString appendString:string];
-			            [mString appendString:@";"];
-					}
-			        [array addObject:mString];
-			        [array addObject:[result.geometry description]];
-
-
-
-			        [tvc.dataStructure addObject:array];
-				}
-
-			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-
-			    [tvc.activityIndicatorView stopAnimating];
-			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-			    [tvc.activityIndicatorView stopAnimating];
-			}];
-
-
-			[self.navigationController pushViewController:tvc animated:YES];
+            [self invoke_ggc_request:tvc];
 		}
 		else if ([kind compare:kGPTitleKey] == NSOrderedSame ) {
-			// setup dictionary
-
-			[[RKLIBGPAPIManager sharedManager] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language:[RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success: ^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
-			    for (RKLIBGPPrediction * predictions in response.predictions) {
-			        NSMutableArray *array = [[NSMutableArray alloc] init];
-			        [array addObject:predictions.predictionDescription];
-			        NSMutableString *mString = [[NSMutableString alloc] init];
-			        for (NSString * string in predictions.types) {
-			            [mString appendString:string];
-			            [mString appendString:@";"];
-					}
-			        [array addObject:mString];
-			        [array addObject:predictions.predictionId];
-
-
-
-			        [tvc.dataStructure addObject:array];
-				}
-
-			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-			    [tvc.activityIndicatorView stopAnimating];
-			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-			    [tvc.activityIndicatorView stopAnimating];
-			}];
-
-			[self.navigationController pushViewController:tvc animated:YES];
+            [self invoke_gp_request:tvc];
 		}
 		else if ([kind compare:kRMProjectsTitleKey] == NSOrderedSame) {
-			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
-			[[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMProjects *projects) {
-			    for (RKLIBRMProject * project in projects.projects) {
-			        NSMutableArray *array = [[NSMutableArray alloc] init];
-			        [array addObject:project.identifier];
-
-			        [array addObject:project.projectId];
-
-
-
-			        [tvc.dataStructure addObject:array];
-				}
-			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-			    [tvc.activityIndicatorView stopAnimating];
-			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-			    [tvc.activityIndicatorView stopAnimating];
-			}];
-			UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
-
-
-
-			[tvc setToolbarItems:@[createProject]];
-			[self.navigationController pushViewController:tvc animated:YES];
-			[self.navigationController setToolbarHidden:NO];
+            [self invoke_rm_request:tvc];
 		}
 		else if ([kind compare:kRMIssuesTitleKey] == NSOrderedSame) {
-			[[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:kRMAPIUser withPassword:kRMAPIPassword];
-			[[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
-			    for (RKLIBRMIssue * issue in issues.issues) {
-			        NSMutableArray *array = [[NSMutableArray alloc] init];
-			        [array addObject:[NSString stringWithFormat:@"%@", issue.issueId]];
-			        [array addObject:issue.descriptionString];
-			        [array addObject:issue.subject];
-
-
-			        [tvc.dataStructure addObject:array];
-				}
-			    [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
-			    [tvc.activityIndicatorView stopAnimating];
-			} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-			    [tvc.activityIndicatorView stopAnimating];
-			}];
-			UIBarButtonItem *createProject = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createProject)];
-
-
-
-			[tvc setToolbarItems:@[createProject]];
-			[self.navigationController pushViewController:tvc animated:YES];
-			[self.navigationController setToolbarHidden:NO];
-		}
-
-
-		else {
-			[tvc.activityIndicatorView stopAnimating];
+            [self invoke_rm_issues_request:tvc];
 		}
 	}
 }
@@ -248,13 +144,105 @@
 	return @"";
 }
 
-#pragma mark action
-- (void)createProject {
-	[[RKLIBRMAPIManager sharedManager] postProjectWithName:@"test" withIdentifier:@"test" withDescription:@"test" success: ^(RKObjectRequestOperation *operation, RKLIBRMProject *project) {
-	    //
-	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-	    //
-	}];
+#pragma mark requests
+
+- (void)invoke_rm_request:(RKLIBTableViewController *)tvc {
+    
+    [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:@"foo" withPassword:@"bar"];
+    [[RKLIBRMAPIManager sharedManager] getProjectsWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMProjects *projects) {
+        for (RKLIBRMProject * project in projects.projects) {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:project.identifier];
+            [array addObject:project.projectId];
+            [tvc.dataStructure addObject:array];
+        }
+        [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+        [tvc.activityIndicatorView stopAnimating];
+    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+        [tvc.activityIndicatorView stopAnimating];
+        [tvc setFailedMessageViewVisible:true];
+    }];
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+    [self.navigationController setToolbarHidden:NO];
 }
 
+- (void)invoke_ggc_request:(RKLIBTableViewController *)tvc {
+    
+    [[RKLIBGGCAPIManager sharedManager] getByStringAddress:@"time square" components:nil bounds:nil key:nil language:[RKLIBDeviceHelper currentlanguageCode] region:nil success: ^(RKObjectRequestOperation *operation, RKLIBGGCResponse *response) {
+        for (RKLIBGGCResult * result in response.results) {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:result.formattedAddress];
+            NSMutableString *mString = [[NSMutableString alloc] init];
+            for (NSString * string in result.types) {
+                [mString appendString:string];
+                [mString appendString:@";"];
+            }
+            [array addObject:mString];
+            [array addObject:[result.geometry description]];
+            [tvc.dataStructure addObject:array];
+        }
+        
+        [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+        
+        [tvc.activityIndicatorView stopAnimating];
+    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+        [tvc.activityIndicatorView stopAnimating];
+        [tvc setFailedMessageViewVisible:true];
+    }];
+    
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+}
+
+- (void)invoke_gp_request:(RKLIBTableViewController *)tvc {
+    
+    [[RKLIBGPAPIManager sharedManager] getInput:@"time square" key:kGPAPIKey offset:0 location:CLLocationCoordinate2DMake(0, 0) radius:0 language:[RKLIBDeviceHelper currentlanguageCode] types:nil components:nil success: ^(RKObjectRequestOperation *operation, RKLIBGPResponse *response) {
+        for (RKLIBGPPrediction * predictions in response.predictions) {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:predictions.predictionDescription];
+            NSMutableString *mString = [[NSMutableString alloc] init];
+            for (NSString * string in predictions.types) {
+                [mString appendString:string];
+                [mString appendString:@";"];
+            }
+            [array addObject:mString];
+            [array addObject:predictions.predictionId];
+            
+            
+            
+            [tvc.dataStructure addObject:array];
+        }
+        
+        [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+        [tvc.activityIndicatorView stopAnimating];
+    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+        [tvc.activityIndicatorView stopAnimating];
+        [tvc setFailedMessageViewVisible:true];
+    }];
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+}
+
+- (void)invoke_rm_issues_request:(RKLIBTableViewController *)tvc {
+    
+    [[RKLIBRMAPIManager sharedManager] configureWithUrl:kRMDemoAPIUrl withUser:kRMAPIUser withPassword:kRMAPIPassword];
+    [[RKLIBRMAPIManager sharedManager] getIssuesWithSuccess: ^(RKObjectRequestOperation *operation, RKLIBRMIssues *issues) {
+        for (RKLIBRMIssue * issue in issues.issues) {
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            [array addObject:[NSString stringWithFormat:@"%@", issue.issueId]];
+            [array addObject:issue.descriptionString];
+            [array addObject:issue.subject];
+            [tvc.dataStructure addObject:array];
+        }
+        [tvc.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tvc.dataStructure.count)] withRowAnimation:UITableViewRowAnimationTop];
+        [tvc.activityIndicatorView stopAnimating];
+    } failure: ^(RKObjectRequestOperation *operation, NSError *error) {
+        [tvc.activityIndicatorView stopAnimating];
+        [tvc setFailedMessageViewVisible:true];
+    }];
+
+    [self.navigationController pushViewController:tvc animated:YES];
+    [self.navigationController setToolbarHidden:NO];
+}
 @end

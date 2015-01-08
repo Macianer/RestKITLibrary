@@ -13,5 +13,4 @@
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[location: %@; [locationType: %@]; viewport %@]", [self.location description], self.locationType, [self.viewport description]];
 }
-
 @end

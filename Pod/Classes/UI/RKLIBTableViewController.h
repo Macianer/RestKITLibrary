@@ -18,4 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataStructure;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *failedMessageView;
+
+-(void) setFailedMessageViewVisible:(BOOL)visible;
 @end
