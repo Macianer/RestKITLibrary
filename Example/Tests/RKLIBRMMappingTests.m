@@ -426,7 +426,7 @@
 }
 
 - (void)testPerformanceExample {
-	// This is an example of a performance test case.
+
 	[self measureBlock: ^{
 	    id json = [RKTestFixture
 	               parsedObjectWithContentsOfFixture:@"rm_issues_file_1_20141007.json"];
@@ -436,7 +436,14 @@
 	        [RKMappingTest testForMapping:[RKLIBRMMappingHelper issuesMapping]
 	                         sourceObject:json
 	                    destinationObject:issues];
-	    // Put the code you want to measure the time of here.
+        [mappingTest addExpectation:[RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"issues" destinationKeyPath:@"issues" evaluationBlock:^BOOL(RKPropertyMappingTestExpectation *expectation, RKPropertyMapping *mapping, id mappedValue, NSError *__autoreleasing *error) {
+            NSArray *predictions = mappedValue;
+            if (predictions.count != 25) {
+                return false;
+            }
+            return true;
+        }]];
+        XCTAssertTrue([mappingTest evaluate], @"The issues count is not correct!");
 	}];
 }
 

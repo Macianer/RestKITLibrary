@@ -34,6 +34,8 @@
 		CDCE708B19F2BA07001F8257 /* rm_issues_file_1_20141007.json in Resources */ = {isa = PBXBuildFile; fileRef = CD9DC77E19E468FE00FABA0E /* rm_issues_file_1_20141007.json */; };
 		CDCE708C19F2BA0A001F8257 /* rm_projects1.json in Resources */ = {isa = PBXBuildFile; fileRef = CD084AE219D4A781008B658F /* rm_projects1.json */; };
 		CDEA9D2619F2846000AC4F1A /* RKLIBRMMappingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */; };
+		F337594B1A5FA994008DD4E4 /* RKLIBGGCAPIManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F337594A1A5FA994008DD4E4 /* RKLIBGGCAPIManagerTests.m */; };
+		F337594D1A5FA9BE008DD4E4 /* RKLIBGPAPIManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F337594C1A5FA9BE008DD4E4 /* RKLIBGPAPIManagerTests.m */; };
 		F3FCF78E1A165144007261D9 /* RKLIBRMAPIManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FCF78D1A165144007261D9 /* RKLIBRMAPIManagerTests.m */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		CD9DC77E19E468FE00FABA0E /* rm_issues_file_1_20141007.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rm_issues_file_1_20141007.json; sourceTree = "<group>"; };
 		CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBRMMappingTests.m; sourceTree = "<group>"; };
 		ECC55CB4A2745F7CD4E619A1 /* Pods-RestKITLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestKITLibrary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RestKITLibrary/Pods-RestKITLibrary.debug.xcconfig"; sourceTree = "<group>"; };
+		F337594A1A5FA994008DD4E4 /* RKLIBGGCAPIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGGCAPIManagerTests.m; sourceTree = "<group>"; };
+		F337594C1A5FA9BE008DD4E4 /* RKLIBGPAPIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBGPAPIManagerTests.m; sourceTree = "<group>"; };
 		F36E20D41A42222A00E6C004 /* RKLIBKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLIBKeys.h; sourceTree = "<group>"; };
 		F3FCF78D1A165144007261D9 /* RKLIBRMAPIManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLIBRMAPIManagerTests.m; sourceTree = "<group>"; };
 		FF99323F671E4BA398A2945F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,10 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				CD9BF3A419C61C7200F3C5C6 /* Fixtures */,
-				CD9ADD1319C63A560028FC91 /* RKLIBGGCMappingTests.m */,
-				CD9ADD0E19C633070028FC91 /* RKLIBGPMappingTests.m */,
-				CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */,
-				F3FCF78D1A165144007261D9 /* RKLIBRMAPIManagerTests.m */,
+				F337594F1A5FA9DF008DD4E4 /* MappingTests */,
+				F337594E1A5FA9CF008DD4E4 /* APIManagerTests */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -227,6 +229,26 @@
 				CD9DC77E19E468FE00FABA0E /* rm_issues_file_1_20141007.json */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		F337594E1A5FA9CF008DD4E4 /* APIManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F337594A1A5FA994008DD4E4 /* RKLIBGGCAPIManagerTests.m */,
+				F337594C1A5FA9BE008DD4E4 /* RKLIBGPAPIManagerTests.m */,
+				F3FCF78D1A165144007261D9 /* RKLIBRMAPIManagerTests.m */,
+			);
+			name = APIManagerTests;
+			sourceTree = "<group>";
+		};
+		F337594F1A5FA9DF008DD4E4 /* MappingTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD9ADD1319C63A560028FC91 /* RKLIBGGCMappingTests.m */,
+				CD9ADD0E19C633070028FC91 /* RKLIBGPMappingTests.m */,
+				CDEA9D2519F2846000AC4F1A /* RKLIBRMMappingTests.m */,
+			);
+			name = MappingTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +435,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEA9D2619F2846000AC4F1A /* RKLIBRMMappingTests.m in Sources */,
+				F337594B1A5FA994008DD4E4 /* RKLIBGGCAPIManagerTests.m in Sources */,
+				F337594D1A5FA9BE008DD4E4 /* RKLIBGPAPIManagerTests.m in Sources */,
 				CD9ADD0F19C633070028FC91 /* RKLIBGPMappingTests.m in Sources */,
 				F3FCF78E1A165144007261D9 /* RKLIBRMAPIManagerTests.m in Sources */,
 				CD9ADD1419C63A560028FC91 /* RKLIBGGCMappingTests.m in Sources */,
@@ -572,6 +596,7 @@
 			baseConfigurationReference = 79DD65B862DB11F59504D57D /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RestKITLibrary.app/RestKITLibrary";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -584,7 +609,9 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -595,6 +622,7 @@
 			baseConfigurationReference = 9D361929026CEA646444C5C4 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RestKITLibrary.app/RestKITLibrary";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -603,6 +631,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
