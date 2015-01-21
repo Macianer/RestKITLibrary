@@ -20,5 +20,5 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *failedMessageView;
 
--(void) setFailedMessageViewVisible:(BOOL)visible;
+- (void)setFailedMessageViewVisible:(BOOL)visible;
 @end

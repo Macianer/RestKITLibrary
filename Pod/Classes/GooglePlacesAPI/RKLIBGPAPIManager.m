@@ -18,7 +18,7 @@
 	static RKLIBGPAPIManager *sharedMapper = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-	    sharedMapper = [[RKLIBGPAPIManager alloc] init];
+		sharedMapper = [[RKLIBGPAPIManager alloc] init];
 	});
 	return sharedMapper;
 }
@@ -113,32 +113,33 @@
 
 	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 
-	if (input)
-		[dict addEntriesFromDictionary:@{ kInput : input }];
-
-	if (components)
-		[dict addEntriesFromDictionary:@{ kComponents : components }];
-
-	if (key)
-		[dict addEntriesFromDictionary:@{ kKey : key }];
-
-	if (offset)
-		[dict addEntriesFromDictionary:@{ kOffset : offset }];
-
-	if (location)
+    if (input) {
+        [dict addEntriesFromDictionary:@{ kInput : input }];
+    }
+    if (components) {
+        [dict addEntriesFromDictionary:@{ kComponents : components }];
+    }
+    if (key) {
+        [dict addEntriesFromDictionary:@{ kKey : key }];
+    }
+    if (offset) {
+        [dict addEntriesFromDictionary:@{ kOffset : offset }];
+    }
+    if (location) {
 		[dict addEntriesFromDictionary:@{ kLocation : location }];
-
-	if (radius)
+    }
+    if (radius) {
 		[dict addEntriesFromDictionary:@{ kRadius: radius }];
-
-	if (language)
+    }
+    if (language) {
 		[dict addEntriesFromDictionary:@{ kLanguage : language }];
-
-	if (types)
+    }
+    if (types) {
 		[dict addEntriesFromDictionary:@{ kTypes : types }];
-
-	if (components)
-		[dict addEntriesFromDictionary:@{ kComponents : components }];
+    }
+    if (components) {
+        [dict addEntriesFromDictionary:@{ kComponents : components }];
+    }
 
 	[self.objectManager getObjectsAtPath:kJson parameters:dict success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 	    if ([mappingResult.firstObject isKindOfClass:[RKLIBGPResponse class]]) {

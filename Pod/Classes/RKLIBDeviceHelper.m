@@ -15,14 +15,13 @@
 @implementation RKLIBDeviceHelper
 
 + (instancetype)sharedHelperInstance {
-    
 	static RKLIBDeviceHelper *sharedHelperInstance = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-	    sharedHelperInstance = [[RKLIBDeviceHelper alloc] init];
-	    sharedHelperInstance.hasGPSSensor = [self hasCarrierName];
-	    sharedHelperInstance.hasRetinaDisplay = [UIScreen mainScreen].scale > 1;
-	    sharedHelperInstance.systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
+		sharedHelperInstance = [[RKLIBDeviceHelper alloc] init];
+		sharedHelperInstance.hasGPSSensor = [self hasCarrierName];
+		sharedHelperInstance.hasRetinaDisplay = [UIScreen mainScreen].scale > 1;
+		sharedHelperInstance.systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
 	});
 	return sharedHelperInstance;
 }
@@ -52,26 +51,23 @@
 	return [mString substringWithRange:NSMakeRange(mString.length - sep.length, sep.length)];
 }
 
-+(UIImage *)snapshotFromView: (UIView *) view
-{
-    // set context
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size,view.opaque, 0.0);
-    
-    //  iOS7 and above
-    if([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]){
-        // faster
-        [view drawViewHierarchyInRect:view.frame afterScreenUpdates:NO];
-    }
-    else
-    {   // iOS 6 and slow
-        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return image;
++ (UIImage *)snapshotFromView:(UIView *)view {
+	// set context
+	UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+
+	//  iOS7 and above
+	if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+		// faster
+		[view drawViewHierarchyInRect:view.frame afterScreenUpdates:NO];
+	} else { // iOS 6 and slow
+		[view.layer renderInContext:UIGraphicsGetCurrentContext()];
+	}
+
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+	UIGraphicsEndImageContext();
+
+	return image;
 }
 
 - (NSString *)platform {

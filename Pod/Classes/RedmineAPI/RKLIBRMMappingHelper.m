@@ -48,8 +48,7 @@
 	                                               @"start_date" : @"startDate", @"created_on" : @"createdOn",
 	                                               @"update_on" : @"updateOn",
 	                                               @"done_ratio" : @"doneRatio",
-                                                   @"estimated_hours" : @"estimatedHours",
-                                                   }];
+	                                               @"estimated_hours" : @"estimatedHours", }];
 	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"project" toKeyPath:@"project" withMapping:[[self class] projectMapping]]];
 
 	[mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tracker" toKeyPath:@"tracker" withMapping:[[self class] trackerMapping]]];

@@ -26,7 +26,7 @@
 	static RKLIBRMAPIManager *sharedMapper = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-	    sharedMapper = [[RKLIBRMAPIManager alloc] init];
+		sharedMapper = [[RKLIBRMAPIManager alloc] init];
 	});
 	return sharedMapper;
 }
@@ -183,9 +183,9 @@
 	if (identifier) {
 		project.identifier = identifier;
 	}
-    if (descriptionString) {
-        project.descriptionString = descriptionString;
-    }
+	if (descriptionString) {
+		project.descriptionString = descriptionString;
+	}
 
 	[self.objectManager postObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 	    success(operation, mappingResult.firstObject);
@@ -202,7 +202,7 @@
  *  @param failure A block object to be executed when the project put request operation finishes unsuccessfully.
  */
 - (void)putWithProject:(RKLIBRMProject *)project
-               success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject)) success
+               success:(void (^)(RKObjectRequestOperation *operation, RKLIBRMProject *updatedProject))success
                failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", project.projectId, kJson];
 	[self.objectManager putObject:project path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -220,14 +220,14 @@
  *  @param failure A block object to be executed when the project delete request operation finishes unsuccessfully.
  */
 - (void)deleteProjectWithID:(NSNumber *)projectId
-                    success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)) success
+                    success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                     failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
 	NSString *path = [NSString stringWithFormat:@"/projects/%@.%@", projectId, kJson];
 
 	[self.objectManager deleteObject:nil path:path parameters:nil success: ^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        success(operation,mappingResult);
+	    success(operation, mappingResult);
 	} failure: ^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation,error);
+	    failure(operation, error);
 	}];
 }
 

@@ -17,12 +17,12 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.failedMessageView.hidden = YES;
+	self.failedMessageView.hidden = YES;
 	self.dataStructure = [[NSMutableArray alloc] init];
 
-    // register main table view
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle]];
-    // 
+	// register main table view
+	UINib *nib = [UINib nibWithNibName:NSStringFromClass([RKLIBTableViewCellMain class]) bundle:[NSBundle mainBundle]];
+	//
 	[self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([RKLIBTableViewCellMain class])];
 }
 
@@ -47,33 +47,36 @@
 
 	cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RKLIBTableViewCellMain class]) forIndexPath:indexPath];
 
-    // get object
+	// get object
 	NSArray *array = _dataStructure[indexPath.section];
-    id object = array[indexPath.row];
+	id object = array[indexPath.row];
 
-    // handle NSString objects
-	if ([object isKindOfClass:[NSString class]])
-		cell.textLabel.text = object;
-    
-    // handle NSString objects
-    if ([object isKindOfClass:[NSAttributedString class]])
+	// handle NSString objects
+    if ([object isKindOfClass:[NSString class]]) {
+        cell.textLabel.text = object;
+    }
+
+	// handle NSString objects
+    if ([object isKindOfClass:[NSAttributedString class]]) {
         cell.textLabel.attributedText = object;
-	
-    return cell;
+    }
+
+	return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
 	NSArray *array = _dataStructure[section];
 	id object = array[0];
 
-	if ([object isKindOfClass:[NSString class]])
-		return object;
-    
+    if ([object isKindOfClass:[NSString class]]) {
+        return object;
+    }
+
 	return @"";
 }
 
--(void) setFailedMessageViewVisible:(BOOL)visible {
-    [_failedMessageView setHidden:!visible];
+- (void)setFailedMessageViewVisible:(BOOL)visible {
+	[_failedMessageView setHidden:!visible];
 }
+
 @end

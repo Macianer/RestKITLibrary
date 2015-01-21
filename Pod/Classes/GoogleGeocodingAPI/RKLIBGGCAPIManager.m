@@ -17,7 +17,7 @@
 	static dispatch_once_t onceToken;
 
 	dispatch_once(&onceToken, ^{
-	    sharedMapper = [[RKLIBGGCAPIManager alloc] init];
+		sharedMapper = [[RKLIBGGCAPIManager alloc] init];
 	});
 	return sharedMapper;
 }
@@ -82,24 +82,29 @@
                     region:(NSString *)region
                    success:(void (^)(RKObjectRequestOperation *operation, RKLIBGGCResponse *response))success
                    failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure {
-    
-    //check minimum requirement
+	//check minimum requirement
 	NSAssert(address || components,  @"Required parameters are not set");
 
 	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 
-	if (address)
-		[dict addEntriesFromDictionary:@{ kAddress : address }];
-	if (components)
-		[dict addEntriesFromDictionary:@{ kComponents : components }];
-	if (bounds)
-		[dict addEntriesFromDictionary:@{ kBounds : bounds }];
-	if (key)
-		[dict addEntriesFromDictionary:@{ kKey : key }];
-	if (language)
-		[dict addEntriesFromDictionary:@{ kLanguage : language }];
-	if (region)
-		[dict addEntriesFromDictionary:@{ kRegion : region }];
+    if (address) {
+        [dict addEntriesFromDictionary:@{ kAddress : address }];
+    }
+    if (components) {
+        [dict addEntriesFromDictionary:@{ kComponents : components }];
+    }
+    if (bounds) {
+        [dict addEntriesFromDictionary:@{ kBounds : bounds }];
+    }
+    if (key) {
+        [dict addEntriesFromDictionary:@{ kKey : key }];
+    }
+    if (language) {
+        [dict addEntriesFromDictionary:@{ kLanguage : language }];
+    }
+    if (region) {
+        [dict addEntriesFromDictionary:@{ kRegion : region }];
+    }
 
 	// look for GPS sensor
 	[dict addEntriesFromDictionary:@{ kSensor : [RKLIBDeviceHelper sharedHelperInstance].hasGPSSensor ? kTrue : kFalse }];
