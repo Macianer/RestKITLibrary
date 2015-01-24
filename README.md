@@ -22,6 +22,7 @@ The Example project demostrates RESTful requests for iOS of the following web se
 * [Google Place Autocomplete API](https://developers.google.com/places/documentation/autocomplete/)
 * [Redmine API ()] (http://www.redmine.org/projects/redmine/wiki/Rest_api) 
 
+
 ## Requirements
 RestKitLibrary requires [iOS 5.1.1](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html#//apple_ref/doc/uid/TP30915195-SW1) and above or [Mac OS X 10.7](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW5) and above.
 
