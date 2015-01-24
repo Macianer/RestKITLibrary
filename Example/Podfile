@@ -1,12 +1,12 @@
 target 'RestKITLibrary', :exclusive => true do
     pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
-    pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
+    pod "RestKITLibrary/GooglePlaceAutocompleteAPI", :path => "../"
     pod "RestKITLibrary/RedmineAPI", :path => "../"
     pod "RestKITLibrary/UI", :path => "../"
 end
 
 target 'Tests', :exclusive => true do
     pod "RestKITLibrary/GoogleGeocodingAPI", :path => "../"
-    pod "RestKITLibrary/GooglePlacesAPI", :path => "../"
+    pod "RestKITLibrary/GooglePlaceAutocompleteAPI", :path => "../"
     pod "RestKITLibrary/RedmineAPI", :path => "../"
 end
