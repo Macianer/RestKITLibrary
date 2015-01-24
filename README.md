@@ -9,19 +9,31 @@ RestKITLibrary represent a collection of RESTful web services based on RestKit.
 The RestKitLibrary includes the following RESTful web services: 
 * [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
 * [Google Place Autocomplete API](https://developers.google.com/places/documentation/autocomplete/)
-* [Redmine API ()] (http://www.redmine.org/projects/redmine/wiki/Rest_api) 
+* [Redmine API (Issues, Projects)] (http://www.redmine.org/projects/redmine/wiki/Rest_api) 
 
 ## Getting Started
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+To include the GoogleGeocodingAPI restkit mapping to your project add the following in Podfile:
+pod "RestKITLibrary/GoogleGeocodingAPI"
+
+To include the GooglePlaceAutocompleteAPI restkit mapping to your project add the following in Podfile:
+pod "RestKITLibrary/GooglePlaceAutocompleteAPI"
+
+To include the RedmineAPI restkit mapping to your project add the following line in your Podfile:
+pod "RestKITLibrary/RedmineAPI"
+
+[What is a Podfile?](http://guides.cocoapods.org/using/the-podfile.html)
+
 ## Examples
 
-The Example project demostrates RESTful requests for iOS of the following web services: 
+The example project demostrates RESTful requests for iOS of the following web services: 
 * [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
 * [Google Place Autocomplete API](https://developers.google.com/places/documentation/autocomplete/)
-* [Redmine API ()] (http://www.redmine.org/projects/redmine/wiki/Rest_api) 
+* [Redmine API] (http://www.redmine.org/projects/redmine/wiki/Rest_api) 
 
+The example project represent the requested responses in the simple table view.
 
 ## Requirements
 RestKitLibrary requires [iOS 5.1.1](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html#//apple_ref/doc/uid/TP30915195-SW1) and above or [Mac OS X 10.7](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_7.html#//apple_ref/doc/uid/TP40010355-SW5) and above.
